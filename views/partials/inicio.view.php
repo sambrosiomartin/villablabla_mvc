@@ -44,7 +44,6 @@
 <!-- Carousel End -->
 <!-- section buscador -->
 <section id="buscador" class="basic-1">
-
     <!--form buscador-->
     <div class="container">
         <div class="row">

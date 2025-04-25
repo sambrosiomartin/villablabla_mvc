@@ -8,7 +8,7 @@ class MdlViajes extends Tablas
     {
         $conection = Conexion::conection();
         $sql = "SELECT * FROM viajes";
-        $sql .= " WHERE fecha BETWEEN CURDATE() AND (CURDATE() + 7) order by destino ASC";
+        $sql .= " WHERE fecha BETWEEN curdate() AND date_add(curdate(),interval 7 day) ORDER by destino ASC";
         $query = $conection->query($sql);
         $values = $query->fetchAll();
         return $values;
