@@ -57,6 +57,16 @@
             max-width: 900px;
             margin-top:-75%;
         }
+        .about-style{
+            margin-bottom: 5%;
+           
+        }
+        .btn{
+            text-decoration: none;
+        }
+        span{
+            font-weight: 900;
+        }
     </style>
 </head>
 
@@ -96,6 +106,10 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="inicio#buscador">Busca tu viaje</a> <span
+                            class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="inicio#about">Que es Villablabla</a> <span
                             class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">

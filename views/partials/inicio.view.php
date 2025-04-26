@@ -47,7 +47,7 @@
     <!--form buscador-->
     <div class="container">
         <div class="row">
-            <div class="col-lg-12" style="background:#E9F1FA;border:2px solid grey; padding: 25px; margin-top:-15%;">
+            <div class="col-lg-12" style="background:#E9F1FA;border:2px solid grey; padding: 25px; margin-top:-10%;">
                 <div class="form-container">
                     <form method="POST" action="">
                         <div class="row">
@@ -115,4 +115,40 @@
         include "views/partials/resultados_buscador.view.php";
     }
     ?>
-</section> <!-- end of section buscador -->
+</section> 
+<!-- end of section buscador -->
+<!-- que es villablabla Start -->
+<section id="about" class="container-fluid py-5 about-style">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="views/images/about/about1.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">¿Que es Villablabla?</h6>
+                        <h3 class="mb-3">Una aplicación para que puedas moverte libremente por tu zona</h3>
+                        <p>En las últimas decadas, las distancias se han acortado gracias a la evolución de los medios de transporte. 
+                            Sin embargo, cuando vives en una zona rural aislada o que carece de medios de transporte eficaces, las distancias
+                            son igual de grandes que hace 50 años. Donde las grandes aplicaciones no llegan, está <span>VILLABLABLA</span> para 
+                            que puedas buscar a un vecino de tu zona que vaya a donde necesitas ir y compartir el coche y los gastos de viaje con esa persona. 
+                            
+                            <h4>Donde no llega nadie, queremos llegar nosotr@s.</h4>
+                        </p>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/about-1.jpg" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/about-2.jpg" alt="">
+                            </div>
+                        </div>
+                        <a href="#buscador" class="btn btn-primary mt-1">Busca tu viaje ahora...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- que es villablabla End -->
