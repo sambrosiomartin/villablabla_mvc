@@ -13,6 +13,15 @@ class MdlViajes extends Tablas
         $values = $query->fetchAll();
         return $values;
     }
+    //METODO LISTAR VIAJES ACTIVOS
+    static public function mdlViajesActivos($value){
+        $conection = Conexion::conection();
+        $sql= "SELECT * FROM viajes WHERE fecha >= curdate() AND id_usuario = ?";
+        $query = $conection->prepare($sql);
+        $query->execute(array($value));
+        $values = $query->fetchAll();
+        return $values;
+    }
     //METODO PARA EVITAR DOS VIAJES IGUALES
     public static function mdlEvitarViajesIguales($table,$datos){
         $conection = Conexion::conection();

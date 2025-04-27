@@ -30,5 +30,5 @@
     //crud viajes
     $viaje=new CtrViajes();
     $table3="viajes";
-    $viajeValues=tablas::showRegister($table3, "id_usuario", $usuarioValues[0]['id']);
+    $viajeValues=$viaje->ctrViajesActivos($usuarioValues[0]['id']);
     include "views/partials/paginaUsuario.view.php";

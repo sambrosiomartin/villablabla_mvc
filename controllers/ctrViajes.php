@@ -8,7 +8,11 @@ class CtrViajes
         $values = mdlViajes::mdlViajesSemana();
         return $values;
     }
-   
+   //metodo listar viajes activos del usuario
+   public function ctrViajesActivos($value){
+        $values= MdlViajes::mdlViajesActivos($value);
+        return $values;
+   }
     //metodo crear viaje
     public function ctrCrearViaje()
     {
