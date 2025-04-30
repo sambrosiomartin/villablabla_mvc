@@ -6,6 +6,7 @@
    require_once "models/mdlBuscador.php";
    require_once "models/mdlViajes.php";
    require_once "models/mdlAutomovil.php";
+   require_once "models/mdlReservas.php";
 //CONTROLADORES
    require_once "controllers/ctrPlantilla.php";
    require_once "controllers/utilidades.php";
@@ -14,5 +15,6 @@
    require_once "controllers/ctrBuscador.php";
    require_once "controllers/ctrViajes.php";
    require_once "controllers/ctrAutomovil.php";
+   require_once "controllers/ctrReservas.php";
    $plantilla=new CtrPlantilla();
     $plantilla->ctrPlantilla();

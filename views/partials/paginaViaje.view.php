@@ -36,7 +36,7 @@
                     <div class="col-md-3 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <?php
-                            foreach ($datos_usuario as $values) {
+                            foreach ($datos_conductor as $values) {
                             ?>
                                 <img src="<?= Utilidades::imagenUsuario($values['username'], $values['foto']) ?>" alt="avatar"
                                     class="rounded-circle img-fluid" style="width: 150px;">
@@ -136,3 +136,34 @@
         </div>
     </div>
 </section>
+<!--MODALES-->
+<!---MODAL DE RESERVA DE PLAZA/S EN VIAJE-->
+<div class="modal fade" id="ModalReserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Introduzca los datos del automovil que usará para los viajes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                    <input type="hidden" name="id_usuario" value="<?=$id_viajero['id']?>">
+                    <input type="hidden" name="id_viaje" value="<?=$datos_viaje[0]['id']?>">
+                    <input type="hidden" name="estado" value="espera">
+                    <div class="col-md-6">
+                        <label for="inputPlazasReservadas" class="form-label">Numero de plazas a reservar</label>
+                        <input type="number" name="num_plazas_reservadas" min="1" max="<?=$datos_auto[0]['numero_plazas']?>" class="form-control" id="inputPlazasReservadas" />
+                    </div>
+                    <div class="col-md-12" style="margin-top:5%;">
+                        <button type="submit" class="btn btn-primary">Enviar datos</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
