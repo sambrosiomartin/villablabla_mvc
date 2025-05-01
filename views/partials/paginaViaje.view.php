@@ -16,7 +16,7 @@
 
                             <h3>Destino: <?= $values['destino'] . " - llega a las (hora salida) + " . $values['tiempo_estimado'] ?></h3>
                             <hr>
-                            <h4>Quedan <?=$datos_auto[0]['numero_plazas']?> (-plazas reservadas) plazas</h4>
+                            <h4>Quedan <?=$num_asientos_vacios?> plazas</h4>
                         <?php
                         }
                         ?>
@@ -142,7 +142,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Introduzca los datos del automovil que usará para los viajes</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Puede reservar de 1 a <?=$num_asientos_vacios?> plazas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -152,9 +152,9 @@
                     <input type="hidden" name="id_usuario" value="<?=$id_viajero['id']?>">
                     <input type="hidden" name="id_viaje" value="<?=$datos_viaje[0]['id']?>">
                     <input type="hidden" name="estado" value="espera">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="inputPlazasReservadas" class="form-label">Numero de plazas a reservar</label>
-                        <input type="number" name="num_plazas_reservadas" min="1" max="<?=$datos_auto[0]['numero_plazas']?>" class="form-control" id="inputPlazasReservadas" />
+                        <input type="number" name="num_plazas_reservadas" min="1" max="<?=$num_asientos_vacios?>" class="form-control" id="inputPlazasReservadas" />
                     </div>
                     <div class="col-md-12" style="margin-top:5%;">
                         <button type="submit" class="btn btn-primary">Enviar datos</button>

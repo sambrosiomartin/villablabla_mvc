@@ -12,6 +12,7 @@ class CtrReservas
             $estado = Utilidades::validate($_POST['estado'], 'nombre');
             if($num_plazas_reservadas && $estado){
                 $existe_viaje=Tablas::showRegister("viajes","id",$_POST['id_viaje']);
+//si existe el viaje y no se ha borrado 
                 if(!empty($existe_viaje)){
                     $table="reservas";
                     $datos = array(
@@ -21,6 +22,7 @@ class CtrReservas
                         "id_usuario" => $_POST['id_usuario']
                     );
                     $efectuar_reserva=MdlReservas::mdlHacerReserva($table,$datos);
+//si el método se ha aplicado bien
                     if($efectuar_reserva){
                         echo "<script>
                             window.alert('La reserva se ha creado con éxito');
@@ -45,5 +47,10 @@ class CtrReservas
             }
         }
        
+    }
+    public function ctrAsientosOcupados($id_viaje){
+        $table="reservas";
+        $value=MdlReservas::mdlAsientosOcupados($table,$id_viaje);
+        return $value;
     }
 }

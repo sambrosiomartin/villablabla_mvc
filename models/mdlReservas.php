@@ -18,4 +18,12 @@ class MdlReservas extends Tablas
             return false;
         }
     }
+    static public function mdlAsientosOcupados($table,$id_viaje){
+        $conection = Conexion::conection();
+        $sql = "SELECT SUM(num_plazas_reservadas) as suma FROM ".$table." WHERE id_viaje = ? and estado in ('aceptada','espera')";
+        $query=$conection->prepare($sql);
+        $query->execute(array($id_viaje));
+        $return_value=$query->fetch();
+        return $return_value;
+    }
 }

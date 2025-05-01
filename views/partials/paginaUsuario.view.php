@@ -161,21 +161,26 @@
                                 <th>Opciones</th>
                             </tr>
                             <?php
-                            foreach ($viajeValues as $values) {
-                                $plazas=tablas::showValueField("automoviles","numero_plazas","id",$values['id_coche'])
+                            //var_dump($viajeValues);
+                            if ($viajeValues != null) {
+                                foreach ($viajeValues as $values) {
+                                    $plazas = tablas::showValueField("automoviles", "numero_plazas", "id", $values['id_coche'])
                             ?>
-                                <tr>
-                                    <td><?= $values['origen'] ?></td>
-                                    <td><?= $values['destino'] ?></td>
-                                    <td><?= $values['fecha'] ?></td>
-                                    <td><?= $values['hora_salida'] ?></td>
-                                    <td><?=$plazas['numero_plazas']?></td>
-                                    <td><?= $values['regularidad'] ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id']?>">Ir a viaje...</a></button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td><?= $values['origen'] ?></td>
+                                        <td><?= $values['destino'] ?></td>
+                                        <td><?= $values['fecha'] ?></td>
+                                        <td><?= $values['hora_salida'] ?></td>
+                                        <td><?= $plazas['numero_plazas'] ?></td>
+                                        <td><?= $values['regularidad'] ?></td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>">Ir a viaje...</a></button>
+                                        </td>
+                                    </tr>
                             <?php
+                                }
+                            } else {
+                                echo "<h4>No Hay viajes activos en este momento</h4>";
                             }
                             ?>
                         </table>

@@ -11,6 +11,15 @@ class CtrViajes
    //metodo listar viajes activos del usuario
    public function ctrViajesActivos($value){
         $values= MdlViajes::mdlViajesActivos($value);
+        /*$num_plazas=Tablas::showValueField("automoviles","numero_plazas","id",$values[0]['id_coche']);
+        $plazas_ocupadas=MdlReservas::mdlAsientosOcupados("reservas",$values[0]['id']);
+        $plazas_vacias=$num_plazas['numero_plazas']-$plazas_ocupadas['suma'];
+        $viajesFinales=array();
+        foreach($values as $viajevalues){
+            if($plazas_vacias> 0){
+                return $values;
+            }
+        }*/
         return $values;
    }
     //metodo crear viaje
