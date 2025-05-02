@@ -3,25 +3,35 @@ require_once "models/mdlViajes.php";
 require_once "utilidades.php";
 class CtrViajes
 {
+    //metodo ayuda a viajes activos y semanales sabiendo que hay plazas o no para que aparezcan visibles
+    public function ctrViajesConAsientos($values){
+        $finalvalues=array();
+        foreach($values  as $onetravelvalues){
+            $num_plazas=Tablas::showValueField("automoviles","numero_plazas","id",$onetravelvalues['id_coche']);
+            $plazas_ocupadas=MdlReservas::mdlAsientosOcupados("reservas",$onetravelvalues['id']);
+            $plazas_vacias=$num_plazas['numero_plazas']-$plazas_ocupadas['suma'];
+            if($plazas_vacias> 0){
+                $finalvalues[]=$onetravelvalues;
+            }
+        }
+        return $finalvalues;
+    }
+    //método de todos los viajes de la semana
     public function ctrViajesSemana()
     {
         $values = mdlViajes::mdlViajesSemana();
-        return $values;
+        $viaje=new CtrViajes();
+        $finalvalues=$viaje->ctrViajesConAsientos($values);
+        return $finalvalues;
     }
    //metodo listar viajes activos del usuario
    public function ctrViajesActivos($value){
         $values= MdlViajes::mdlViajesActivos($value);
-        /*$num_plazas=Tablas::showValueField("automoviles","numero_plazas","id",$values[0]['id_coche']);
-        $plazas_ocupadas=MdlReservas::mdlAsientosOcupados("reservas",$values[0]['id']);
-        $plazas_vacias=$num_plazas['numero_plazas']-$plazas_ocupadas['suma'];
-        $viajesFinales=array();
-        foreach($values as $viajevalues){
-            if($plazas_vacias> 0){
-                return $values;
-            }
-        }*/
-        return $values;
+        $viaje=new CtrViajes();
+        $finalvalues=$viaje->ctrViajesConAsientos($values);
+        return $finalvalues;
    }
+   
     //metodo crear viaje
     public function ctrCrearViaje()
     {

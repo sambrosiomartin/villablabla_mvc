@@ -26,4 +26,23 @@ class MdlReservas extends Tablas
         $return_value=$query->fetch();
         return $return_value;
     }
+    //update reservas
+    static public function mdlUpdate($table, $field,$value,$id)
+    {
+        $conection = Conexion::conection();
+        $sql = "UPDATE " . $table . " SET ".$field." = ? WHERE id= ?";
+        $query = $conection->prepare($sql);
+        if (
+            $query->execute(
+                array(
+                    $value,
+                    $id
+                )
+            )
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

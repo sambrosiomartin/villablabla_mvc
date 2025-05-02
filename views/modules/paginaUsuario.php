@@ -31,4 +31,6 @@
     $viaje=new CtrViajes();
     $table3="viajes";
     $viajeValues=$viaje->ctrViajesActivos($usuarioValues[0]['id']);
+    //controlador reservas
+    $reserva=new CtrReservas();
     include "views/partials/paginaUsuario.view.php";

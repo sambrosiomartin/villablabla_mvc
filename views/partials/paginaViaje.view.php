@@ -50,7 +50,7 @@
                         <div class="p-3 py-5">
                             <div class="row mt-2">
                                 <?php
-                                foreach ($datos_usuario as $values) {
+                                foreach ($datos_conductor as $values) {
                                 ?>
                                     <div class="col-sm-3">
                                         <p class="mb-0"><b>Nombre completo</b></p>

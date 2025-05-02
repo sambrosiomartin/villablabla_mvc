@@ -164,7 +164,8 @@
                             //var_dump($viajeValues);
                             if ($viajeValues != null) {
                                 foreach ($viajeValues as $values) {
-                                    $plazas = tablas::showValueField("automoviles", "numero_plazas", "id", $values['id_coche'])
+                                    $plazas = tablas::showValueField("automoviles", "numero_plazas", "id", $values['id_coche']);
+                                    $reservas_activas=$reserva->ctrReservasEspera($values['id']);
                             ?>
                                     <tr>
                                         <td><?= $values['origen'] ?></td>
@@ -175,6 +176,13 @@
                                         <td><?= $values['regularidad'] ?></td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>">Ir a viaje...</a></button>
+                                            <?php 
+                                                if($reservas_activas==1){
+                                            ?>
+                                                <button type="button" class="btn btn-outline-secondary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>#reservas">Reservas en espera</a></button>
+                                            <?php
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                             <?php

@@ -75,7 +75,7 @@
                                 <?= $value['regularidad'] ?>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="#" role="button">ir a viaje...</a>
+                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>">Ir a viaje...</a></button>
                             </td>
                         </tr>
 
