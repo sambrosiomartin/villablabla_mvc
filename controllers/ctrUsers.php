@@ -94,8 +94,8 @@ class CtrUsers
                         "foto" => $_FILES['foto']['name'],
                         "id" => $_POST['id'],
                     );
-                    $create = MdlUsers::mdlUpdate($table, $datos);
-                    if ($create == true) {
+                    $update = MdlUsers::mdlUpdate($table, $datos);
+                    if ($update == true) {
                         echo "<script>
                             window.alert('Se ha modificado los datos de perfil con éxito');
                             window.location='paginaUsuario';
@@ -109,7 +109,7 @@ class CtrUsers
                     }
                 } else {
                     echo "<script>
-                        window.alert('El usuario ya existe');
+                        window.alert('El usuario no existe');
                     </script>";
                     return false;
                 }

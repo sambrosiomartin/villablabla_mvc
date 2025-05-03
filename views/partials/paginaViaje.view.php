@@ -1,10 +1,10 @@
 <section style="background-color: #eee; margin-top:5%;">
     <div class="container py-5">
-<!--titulo-->
+        <!--titulo-->
         <div style="text-align: center;">
             <h2>Viaje <b><?= $datos_viaje[0]['origen'] ?> - <b><?= $datos_viaje[0]['destino'] ?></b></h2>
         </div>
-<!--inicio datos viaje-->
+        <!--inicio datos viaje-->
         <div class="row">
             <div class="container rounded bg-white mb-5">
                 <div class="row">
@@ -16,17 +16,17 @@
 
                             <h3>Destino: <?= $values['destino'] . " - llega a las (hora salida) + " . $values['tiempo_estimado'] ?></h3>
                             <hr>
-                            <h4>Quedan <?=$num_asientos_vacios?> plazas</h4>
+                            <h4>Quedan <?= $num_asientos_vacios ?> plazas</h4>
                         <?php
                         }
                         ?>
                     </div>
                 </div>
             </div>
-    
-                    <!--fin de datos viaje-->
-                    <!--datos del conductor--->
-        
+
+            <!--fin de datos viaje-->
+            <!--datos del conductor--->
+
             <div class="container rounded bg-white mb-5">
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -60,7 +60,7 @@
                                     </div>
                             </div>
                             <hr>
-<!--se verá el numero de telefono cuando el viajero reserve plaza-->
+                            <!--se verá el numero de telefono cuando el viajero reserve plaza-->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Teléfono</p>
@@ -85,9 +85,9 @@
                         <h3>Detalles del viaje</h3>
                     </div>
                     <ul>
-<!--AQUI VA UN FOREACH CON LAS OPCIONES DE VIAJE QUE HAYA ELEGIDO EL CONDUCTOR PARA SU VIAJE-->
+                        <!--AQUI VA UN FOREACH CON LAS OPCIONES DE VIAJE QUE HAYA ELEGIDO EL CONDUCTOR PARA SU VIAJE-->
                         <li>
-                            Descripción: <?=$datos_viaje[0]['descripcion']?>
+                            Descripción: <?= $datos_viaje[0]['descripcion'] ?>
                         </li>
                     </ul>
                 </div>
@@ -100,29 +100,64 @@
                         <h3>Detalles del automovil</h3>
                     </div>
                     <ul>
-                        <?php 
-                            foreach($datos_auto as $values){
-                        ?>
-                        <li><b>Marca y modelo: </b><?=$values['marca']." ".$values['modelo']?></li>
-                        <li>Color: <?=$values['color']?></li>
                         <?php
-                            }
+                        foreach ($datos_auto as $values) {
+                        ?>
+                            <li><b>Marca y modelo: </b><?= $values['marca'] . " " . $values['modelo'] ?></li>
+                            <li>Color: <?= $values['color'] ?></li>
+                        <?php
+                        }
                         ?>
                     </ul>
                 </div>
             </div>
             <!--fin de datos del auto-->
-<!--LA CAJA DE RESERVA SOLO LA VERÁN AQUELLXS QUE NO SEAN EL CONDUCTOR-->
-<!--caja de reserva-->
+            <!--LA CAJA DE RESERVA SOLO LA VERÁN AQUELLXS QUE NO SEAN EL CONDUCTOR-->
+            <!--caja de reserva-->
             <div class="container rounded bg-white mb-5">
                 <div class="row">
                     <div class="col-lg-12 text-center button-padding">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalReserva" data-whatever="@mdo">Reservar plaza</button>
                     </div>
-                </div>            
+                </div>
             </div>
             <!--fin de caja de reserva-->
-<!--AQUI ESTARÁN LAS OPCIONES PARA EL CONDUCTOR, SOLO PODRÁ VERLAS EL CONDUCTOR-->
+            <!--AQUI ESTARÁN LAS OPCIONES PARA EL CONDUCTOR, SOLO PODRÁ VERLAS EL CONDUCTOR-->
+            <!--el conductor puede ver las reservas y su estado-->
+            <div class="container rounded bg-white mb-5">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Id</td>
+                                    <td>Viajero</td>
+                                    <td>Número de asientos reservados</td>
+                                    <td>Estado de la reserva</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    foreach($reservas_viaje as $values){
+                                    $viajero=$datos->ctrShowRegister("usuarios",'id',$values['id_usuario']);
+                                ?>
+                                    <td><?=$value['id']?></td>
+                                    <td><?=$viajero[0]['nombre']." ".$viajero[0]['apellido']?></td>
+                                    <td><?=$value['num_plazas_reservadas']?></td>
+                                    <td>
+<!--si tengo tiempo, convertir esto en un partial aparte-->
+
+
+                                    </td>
+                                <?php    
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--fin de sección-->
             <div class="container rounded bg-white mb-5">
                 <div class="row">
                     <div class="col-lg-12 text-center button-padding">
@@ -142,19 +177,19 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Puede reservar de 1 a <?=$num_asientos_vacios?> plazas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Puede reservar de 1 a <?= $num_asientos_vacios ?> plazas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
-                    <input type="hidden" name="id_usuario" value="<?=$id_viajero['id']?>">
-                    <input type="hidden" name="id_viaje" value="<?=$datos_viaje[0]['id']?>">
+                <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                    <input type="hidden" name="id_usuario" value="<?= $id_viajero['id'] ?>">
+                    <input type="hidden" name="id_viaje" value="<?= $datos_viaje[0]['id'] ?>">
                     <input type="hidden" name="estado" value="espera">
                     <div class="col-md-12">
                         <label for="inputPlazasReservadas" class="form-label">Numero de plazas a reservar</label>
-                        <input type="number" name="num_plazas_reservadas" min="1" max="<?=$num_asientos_vacios?>" class="form-control" id="inputPlazasReservadas" />
+                        <input type="number" name="num_plazas_reservadas" min="1" max="<?= $num_asientos_vacios ?>" class="form-control" id="inputPlazasReservadas" />
                     </div>
                     <div class="col-md-12" style="margin-top:5%;">
                         <button type="submit" class="btn btn-primary">Enviar datos</button>
