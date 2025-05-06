@@ -41,17 +41,17 @@ class Utilidades
     }
     ////////IMAGENES
     //PARA LA RUTA DE LA IMAGENES
-    static public function rutaImagen($ruta_carpeta){
+    static public function rutaImagen($ruta_carpeta)
+    {
         return $ruta_carpeta;
     }
-    static public function imagenUsuario($carpetaImagen,$imagen)
+    static public function imagenUsuario($carpetaImagen, $imagen)
     {
-        $ruta="views/images/users/";
-        if($imagen!=null){
-            $imagenVista=$ruta.$carpetaImagen."/".$imagen;
-        }
-        else{
-            $imagenVista=$ruta."default.jpg";
+        $ruta = "views/images/users/";
+        if ($imagen != null) {
+            $imagenVista = $ruta . $carpetaImagen . "/" . $imagen;
+        } else {
+            $imagenVista = $ruta . "default.jpg";
         }
         return $imagenVista;
     }
@@ -181,5 +181,28 @@ class Utilidades
             return true;
         }
     }
-
+    //PARA VER SI SE CAMBIAN LOS DATOS PRINCIPALES DE UN VIAJE
+    //si se modifica un viaje pero no se modifican fecha, hora del viaje, destino y origen, si pusiera una funcion
+    //en el metodo de modificar, para ver si coincide con otro viaje ya existente siempre dará positivo
+    //puesto que la funcion para tal fin, recoge esos datos y si no se cambian los datos originales 
+    //coincidirán, pero si se cambian esos datos y coinciden con otro viaje igual pero con diferente fecha
+    //hay que poner dicha funcion pero saber antes si se cambian o no los datos principales
+    static public function DatosCambiadosViaje($table, $datos)
+    {
+        $viaje = Tablas::showRegister($table, 'id', $datos['id']);
+        $interrumptor_viaje = false;
+        foreach ($viaje as $datos_viaje) {
+            if ($datos['fecha'] != $datos_viaje['fecha']) {
+                $interrumptor_viaje = false;
+            }
+            if ($datos['hora_salida'] != $datos_viaje['hora_salida']) {
+                $interrumptor_viaje = false;
+            }
+        }
+        if ($interrumptor_viaje == true) {
+            return true;
+        } else {
+            MdlViajes::mdlEvitarViajesIguales($table, $datos);
+        }
+    }
 }

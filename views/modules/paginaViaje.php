@@ -18,7 +18,11 @@
         $num_asientos_vacios=$datos_auto[0]['numero_plazas'] - $num_asientos_ocupados['suma'];
     }
 //creación de reserva
-    if(isset($_POST) && !empty($_POST)){
+    if(isset($_POST['hacer_reserva']) && !empty($_POST)){
         $reseva_enviada=$reserva->ctrHacerReserva();
     }
+//cambiar el estado de reserva, según si el conductor acepta o deniega la reserva de un viajero
+if(isset($_POST['cambiar_estado_reserva']) && !empty($_POST)){
+    $reseva_enviada=$reserva->ctrUpdate('estado');
+}
     include "views/partials/paginaViaje.view.php";

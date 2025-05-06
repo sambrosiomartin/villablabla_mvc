@@ -124,10 +124,10 @@
             <!--fin de caja de reserva-->
             <!--AQUI ESTARÁN LAS OPCIONES PARA EL CONDUCTOR, SOLO PODRÁ VERLAS EL CONDUCTOR-->
             <!--el conductor puede ver las reservas y su estado-->
-            <div class="container rounded bg-white mb-5">
+            <div class="container rounded bg-white mb-5" >
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <table>
+                        <table style="width:100%;">
                             <thead>
                                 <tr>
                                     <td>Id</td>
@@ -141,12 +141,13 @@
                                     foreach($reservas_viaje as $values){
                                     $viajero=$datos->ctrShowRegister("usuarios",'id',$values['id_usuario']);
                                 ?>
-                                    <td><?=$value['id']?></td>
-                                    <td><?=$viajero[0]['nombre']." ".$viajero[0]['apellido']?></td>
-                                    <td><?=$value['num_plazas_reservadas']?></td>
+                                    <td><?=$values['id']?></td>
+                                    <td><?=$viajero[0]['nombre']." ".$viajero[0]['apellido1']?></td>
+                                    <td><?=$values['num_plazas_reservadas']?></td>
                                     <td>
-<!--si tengo tiempo, convertir esto en un partial aparte-->
-
+<!--si tengo tiempo, convertir esto en un partial aparte y usar jquery-->
+<!--cambiar colores de estado de reserva según esté en espera, negada o afirmada--->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalCambiarEstadoReserva" data-whatever="@mdo">Reserva <?=$values['estado']?></button>
 
                                     </td>
                                 <?php    
@@ -184,12 +185,47 @@
             </div>
             <div class="modal-body">
                 <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                    <input type="hidden" name="hacer_reserva" />
                     <input type="hidden" name="id_usuario" value="<?= $id_viajero['id'] ?>">
                     <input type="hidden" name="id_viaje" value="<?= $datos_viaje[0]['id'] ?>">
                     <input type="hidden" name="estado" value="espera">
                     <div class="col-md-12">
                         <label for="inputPlazasReservadas" class="form-label">Numero de plazas a reservar</label>
                         <input type="number" name="num_plazas_reservadas" min="1" max="<?= $num_asientos_vacios ?>" class="form-control" id="inputPlazasReservadas" />
+                    </div>
+                    <div class="col-md-12" style="margin-top:5%;">
+                        <button type="submit" class="btn btn-primary">Enviar datos</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--fin de modal hacer reserva-->
+<!--modal cambiar estado de la reserva-->
+<div class="modal fade" id="ModalCambiarEstadoReserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aquí podrá cambiar el estado de la reserva de los viajeros</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                    <input type="hidden" name="id" value="<?= $reservas_viaje[0]['id'] ?>">
+                    <input type="hidden" name="cambiar_estado_reserva" value="">
+                    <div class="col-md-12">
+                        <label for="inputCambiarEstado" class="form-label">Cambiar estado</label>
+                        <select name="value_field" id="inputCambiarEstado">
+                            <option value="">Tipo de estado de reserva</option>
+                            <option value="aceptada">Aceptar reserva</option>
+                            <option value="denegada">Denegar reserva</option>
+                        </select>
                     </div>
                     <div class="col-md-12" style="margin-top:5%;">
                         <button type="submit" class="btn btn-primary">Enviar datos</button>

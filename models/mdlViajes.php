@@ -35,13 +35,12 @@ class MdlViajes extends Tablas
     public static function mdlCreateViaje($table, $datos)
     {
         $conection = Conexion::conection();
-        $sql = "INSERT INTO " . $table . " (fecha, hora_salida, origen, destino, direccion_origen, direccion_destino, tiempo_estimado, regularidad, descripcion, id_usuario, id_coche) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO " . $table . " (fecha, hora_salida, direccion_origen, direccion_destino, tiempo_estimado, regularidad, descripcion, id_usuario, id_coche) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conection->prepare($sql);
         if ($query->execute(array(
             $datos['fecha'],
             $datos['hora_salida'],
             $datos['origen'],
-            $datos['destino'],
             $datos['direccion_origen'],
             $datos['direccion_destino'],
             $datos['tiempo_estimado'],
@@ -50,6 +49,35 @@ class MdlViajes extends Tablas
             $datos['id_usuario'],
             $datos['id_coche']
         ))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //METODOS UPDATE DE VIAJES
+    //SI SE HACE ALGÚN CAMBIO EN EL VIAJE, SE ENVIARÁ UN MENSAJE AUTOMATICO A LOS VIAJEROS CON LOS CAMBIOS
+    static public function mdlUpdateViaje($table, $datos)
+    {
+        $conection = Conexion::conection();
+        $sql = "UPDATE " . $table . " SET fecha= ?,hora_salida= ?,origen= ?,destino= ?,direccion_origen= ?,direccion_destino= ?,tiempo_estimado= ?,regularidad= ?,descripcion= ? WHERE id= ?";
+        $query = $conection->prepare($sql);
+        if (
+            $query->execute(
+                array(
+                    $datos['fecha'],
+                    $datos['hora_salida'],
+                    $datos['origen'],
+                    $datos['destino'],
+                    $datos['direccion_origen'],
+                    $datos['direccion_destino'],
+                    $datos['tiempo_estimado'],
+                    $datos['regularidad'],
+                    $datos['descripcion'],
+                    $datos['id_coche'],
+                    $datos['id']
+                )
+            )
+        ) {
             return true;
         } else {
             return false;

@@ -66,11 +66,11 @@ class CtrReservas
     {
         if (isset($_POST) && !empty($_POST)) {
             $table = "reservas";
-            $field = "id";
+            $campo = "id";
             $id = $_POST['id'];
-            $read = MdlReservas::showRegister($table, $field, $id);
+            $read = MdlReservas::showRegister($table, $campo, $id);
             if (!empty($read)) {
-                $update = MdlReservas::mdlUpdate($table, $field, $_POST['value'], $id);
+                $update = MdlReservas::mdlUpdate($table, $field, $_POST['value_field'], $id);
                 if ($update == true) {
                     echo "<script>
                             window.alert('Los datos de la reserva se han modificado con éxito');
