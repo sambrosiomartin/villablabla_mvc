@@ -25,15 +25,20 @@ class CtrViajes
         $finalvalues = $viaje->ctrViajesConAsientos($values);
         return $finalvalues;
     }
-    //metodo listar viajes activos del usuario
+    //metodo listar viajes activos del usuario conductor
     public function ctrViajesActivos($value)
+    {
+        $values = MdlViajes::mdlViajesActivos($value);
+        return $values;
+    }
+    //metodo listar viajes activos y con asientos disponibles del usuario
+    /*public function ctrViajesActivos($value)
     {
         $values = MdlViajes::mdlViajesActivos($value);
         $viaje = new CtrViajes();
         $finalvalues = $viaje->ctrViajesConAsientos($values);
         return $finalvalues;
-    }
-
+    }*/
     //metodo crear viaje
     public function ctrCrearViaje()
     {
@@ -80,7 +85,7 @@ class CtrViajes
                     if ($viaje) {
                         echo "<script>
                             window.alert('El viaje se ha creado con éxito');
-                            window.location='inicio';
+                            window.location='paginaUsuario';
                         </script>";
                         return true;
                     } else {
@@ -136,7 +141,6 @@ class CtrViajes
                         if ($viaje) {
                             echo "<script>
                                 window.alert('El viaje se ha modificado con éxito');
-                                window.location='paginaUsuario';
                             </script>";
                             return true;
                         } else {
@@ -160,6 +164,79 @@ class CtrViajes
             </script>";
                 return false;
             }
+        }
+    }
+    public function ctrAddParada()
+    {
+        if (isset($_POST) && !empty($_POST)) {
+            $poblacion = Utilidades::validate($_POST['poblacion'], 'apellido');
+            $direccion = Utilidades::validate($_POST['direccion'], 'texto');
+            $time=$_POST['add_time'];
+            $add_time = Utilidades::validate($time, 'entero');
+            if ($poblacion && $direccion && $add_time && $time>=1) {
+                $table = "paradas";
+                $datos = array(
+                    "poblacion" => $_POST['poblacion'],
+                    "direccion" => $_POST['direccion'],
+                    "add_time" => $time,
+                    "id_viaje" => $_POST['id_viaje']
+                );
+                $table_viajes = "viajes";
+                $existe_viaje = MdlViajes::showRegister($table_viajes, "id", $datos['id_viaje']);
+                if (!empty($existe_viaje)) {
+                    $add_parada = MdlViajes::mdlAddParada($table, $datos);
+                    if ($add_parada) {
+                        echo "<script>
+                           window.alert('La parada se ha creado con éxito');
+                           window.location='paginaUsuario';
+                       </script>";
+                        return true;
+                    } else {
+                        echo "<script>
+                           window.alert('El viaje no se ha podido registrar');
+                       </script>";
+                    }
+                } else {
+                    echo "<script>
+                            window.alert('No existe el viaje');
+                        </script>";
+                }
+            } else {
+                echo "<script>
+                        window.alert('Error en alguno de los datos introducidos');
+                    </script>";
+            }
+        } else {
+            echo "<script>
+                window.alert('No se ha podido introducir alguno de los datos, inténtelo más tarde');
+            </script>";
+            return false;
+        }
+    }
+     //mÃ©todo controlador eliminar parada
+    public function ctrDeleteParada()
+    {
+        if (isset($_POST) && !empty($_POST)) {
+            $table="paradas";
+            $datos = array("id" => $_POST['id']);
+            $delete = MdlViajes::mdlDeleteParada($table,$datos);
+            if ($delete) {
+                echo "<script>
+                    window.alert('Se ha eliminado el registro con éxito');
+                    window.location='paginaUsuario';
+                </script>";
+                return true;
+            } else {
+                echo "<script>
+                    window.alert('No se ha podido eliminar el registro');
+                </script>";
+                return false;
+            }
+        }
+        else{
+            echo "<script>
+                    window.alert('Se ha producido un error');
+                </script>";
         }
     }
 }

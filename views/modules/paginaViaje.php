@@ -3,19 +3,26 @@
     if(isset($_GET) && !empty($_GET)){
         $datos=new CtrTablas();
         $reserva=new CtrReservas();
+        $viaje=new CtrViajes();
         $table_viajes="viajes";
         $table_usuarios="usuarios";
         $table_auto="automoviles";
         $table_reserva="reservas";
+        $table_paradas="paradas";
         $datos_viaje=$datos->ctrShowRegister($table_viajes, "id", $_GET['id']);
         $datos_conductor=$datos->ctrShowRegister($table_usuarios,"id",$datos_viaje[0]['id_usuario']);
         $datos_auto=$datos->ctrShowRegister($table_auto,"id",$datos_viaje[0]['id_coche']);
         $id_viajero=$datos->ctrshowValueField($table_usuarios,"id","username",$_SESSION['username']);
         $reservas_viaje=$datos->ctrShowRegister($table_reserva,'id_viaje',$datos_viaje[0]['id']);
+        //coches del conductor
+        $coches_conductor=$datos->ctrShowRegister($table_auto,"id_usuario",$datos_viaje[0]['id_usuario']);
+        //var_dump($coches_conductor);
     //numero de asientos vacios
         $reserva=new CtrReservas();
         $num_asientos_ocupados=$reserva->ctrAsientosOcupados($datos_viaje[0]['id']);
         $num_asientos_vacios=$datos_auto[0]['numero_plazas'] - $num_asientos_ocupados['suma'];
+    //paradas 
+        $paradas=$datos->ctrShowRegister($table_paradas,"id_viaje",$datos_viaje[0]['id']);
     }
 //creación de reserva
     if(isset($_POST['hacer_reserva']) && !empty($_POST)){
@@ -24,5 +31,17 @@
 //cambiar el estado de reserva, según si el conductor acepta o deniega la reserva de un viajero
 if(isset($_POST['cambiar_estado_reserva']) && !empty($_POST)){
     $reseva_enviada=$reserva->ctrUpdate('estado');
+}
+//editar datos de un viaje
+if(isset($_POST['editar_viaje']) && !empty($_POST)){
+    $editar_viaje=$viaje->ctrUpdate();
+}
+//añadir parada a un viaje
+if(isset($_POST['addParada']) && !empty($_POST)){
+    $addParada=$viaje->ctrAddParada();
+}
+//eliminar parada
+if(isset($_POST['eliminarParada']) && !empty($_POST)){
+    $eliminarParada=$viaje->ctrDeleteParada();
 }
     include "views/partials/paginaViaje.view.php";

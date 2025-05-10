@@ -190,7 +190,7 @@ class Utilidades
     static public function DatosCambiadosViaje($table, $datos)
     {
         $viaje = Tablas::showRegister($table, 'id', $datos['id']);
-        $interrumptor_viaje = false;
+        $interrumptor_viaje = true;
         foreach ($viaje as $datos_viaje) {
             if ($datos['fecha'] != $datos_viaje['fecha']) {
                 $interrumptor_viaje = false;
@@ -199,10 +199,17 @@ class Utilidades
                 $interrumptor_viaje = false;
             }
         }
+       
         if ($interrumptor_viaje == true) {
             return true;
         } else {
-            MdlViajes::mdlEvitarViajesIguales($table, $datos);
+            $comprobarViaje=MdlViajes::mdlEvitarViajesIguales($table, $datos);
+            if(empty($comprobarViaje)){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     }
 }

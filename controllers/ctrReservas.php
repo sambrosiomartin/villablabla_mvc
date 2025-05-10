@@ -74,7 +74,7 @@ class CtrReservas
                 if ($update == true) {
                     echo "<script>
                             window.alert('Los datos de la reserva se han modificado con éxito');
-                            window.location='paginaViaje';
+                            window.location='paginaUsuario';
                         </script>";
                     return true;
                 } else {
@@ -89,6 +89,11 @@ class CtrReservas
                 </script>";
                 return false;
             }
+        }
+        else{
+            echo "<script>
+                    window.alert('Vuelva a intentarlo');
+                </script>";
         }
     }
 }
