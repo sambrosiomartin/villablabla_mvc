@@ -1,4 +1,7 @@
 <?php
+    $paradas_buscador=array("Villablanca" => "villablanca","Ayamonte" => "ayamonte","Lepe" => "lepe", "Isla Cristina" => "islacristina" ,
+    "Cartaya" => "cartaya", "Huelva centro" => "huelvacentro", "Huelva - Infanta Elena" => "infantaelene",
+    "Huelva - Vázquez Díaz" => "vazquezdiaz", "Sevilla" => "sevilla", "Otros" => "otros");
     if(isset($_POST) && !empty($_POST)){
       //var_dump($_POST);
       if($_POST['origen'] != "otros"){

@@ -56,9 +56,13 @@
                                 <select name="origen" class="form-control-select" id="forOrigen" required>
                                     <option class="select-option" value="" disabled selected>Seleccione una opción de origen
                                     </option>
-                                    <option class="select-option" value="villablanca">VILLABLANCA</option>
-                                    <option class="select-option" value="lepe">Lepe</option>
-                                    <option class="select-option" value="otros">Otros</option>
+                                      <?php 
+                                            foreach($paradas_buscador as $key => $value){
+                                        ?>
+                                            <option class="select-option" value="<?=$value?>"><?=$key?></option>
+                                        <?php 
+                                            }
+                                        ?>
                                 </select>
 
                             </div>
@@ -67,9 +71,13 @@
                                 <select name="destino" class="form-control-select" id="forDestino" required>
                                     <option class="select-option" value="" disabled selected>Seleccione una opción de
                                         destino</option>
-                                    <option class="select-option" value="villablanca">VILLABLANCA</option>
-                                    <option class="select-option" value="lepe">Lepe</option>
-                                    <option class="select-option" value="otros">Otros</option>
+                                        <?php 
+                                            foreach($paradas_buscador as $key => $value){
+                                        ?>
+                                            <option class="select-option" value="<?=$value?>"><?=$key?></option>
+                                        <?php 
+                                            }
+                                        ?>
                                 </select>
                             </div>
 
