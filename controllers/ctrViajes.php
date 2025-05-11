@@ -166,6 +166,37 @@ class CtrViajes
             }
         }
     }
+     //mÃ©todo controlador eliminar viaje, que eliminará también reservas y paradas
+    public function ctrDeleteViaje()
+    {
+        if (isset($_POST) && !empty($_POST)) {
+            $table_viajes="viajes";
+            $table_reservas="reservas";
+            $table_paradas="paradas";
+            $datos = array("id" => $_POST['id']);
+            $delete_viaje = MdlAutomovil::deleteAll($table_viajes,"id",$datos['id']);
+            $delete_reservas = MdlReservas::deleteAll($table_reservas,"id_viaje",$datos['id']);
+            $delete_paradas = MdlViajes::deleteAll($table_paradas, "id_viaje",$datos['id']);
+            if ($delete_viaje && $delete_reservas && $delete_paradas) {
+
+                echo "<script>
+                    window.alert('Se ha eliminado el viaje con éxito');
+                    window.location='paginaUsuario';
+                </script>";
+                return true;
+            } else {
+                echo "<script>
+                    window.alert('No se ha podido eliminar el registro');
+                </script>";
+                return false;
+            }
+        }
+        else{
+            echo "<script>
+                    window.alert('Se ha producido un error');
+                </script>";
+        }
+    }
     public function ctrAddParada()
     {
         if (isset($_POST) && !empty($_POST)) {

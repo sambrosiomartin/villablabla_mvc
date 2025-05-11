@@ -17,20 +17,36 @@ class Tablas
         }
         return $valors;
     }
-    static public function showValueField($table,$field1,$field2,$value){
-        $conexion=Conexion::conection();
-        $sql="SELECT ".$field1." FROM ".$table." WHERE ".$field2." = ?";
-        $query=$conexion->prepare($sql);
+    static public function showValueField($table, $field1, $field2, $value)
+    {
+        $conexion = Conexion::conection();
+        $sql = "SELECT " . $field1 . " FROM " . $table . " WHERE " . $field2 . " = ?";
+        $query = $conexion->prepare($sql);
         $query->execute(array($value));
-        $return_value=$query->fetch();
+        $return_value = $query->fetch();
         return $return_value;
     }
-    static public function queryRandom($query,$field,$value){
-        $conexion=Conexion::conection();
-        $sql=$query." AND ".$field." = ?";
-        $query=$conexion->prepare($sql);
+    static public function queryRandom($query, $field, $value)
+    {
+        $conexion = Conexion::conection();
+        $sql = $query . " AND " . $field . " = ?";
+        $query = $conexion->prepare($sql);
         $query->execute(array($value));
-        $values=$query->fetchAll();
+        $values = $query->fetchAll();
         return $values;
+    }
+    //método estatico universal para borrar de tabla dependiendo de un campo común
+    static public function deleteAll($table, $field, $value)
+    {
+        $conection = Conexion::conection();
+        $sql = "DELETE FROM " . $table . " WHERE ".$field." = ?";
+        $query = $conection->prepare($sql);
+        if (
+            $query->execute(array($value))
+        ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

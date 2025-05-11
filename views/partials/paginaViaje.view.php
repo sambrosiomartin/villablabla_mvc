@@ -380,7 +380,7 @@ foreach ($datos_viaje as $value) {
                                     <?= $values_parada['add_time'] ?>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#ModalDeleteParada<?=$values_parada['id']?>" data-whatever="@mdo">Eliminar</button>
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#ModalDeleteParada<?= $values_parada['id'] ?>" data-whatever="@mdo">Eliminar</button>
                                 </td>
                             </tr>
                         <?php
@@ -438,11 +438,11 @@ foreach ($datos_viaje as $value) {
 <?php
 foreach ($paradas as $values_parada) {
 ?>
-    <div class="modal fade" id="ModalDeleteParada<?=$values_parada['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ModalDeleteParada<?= $values_parada['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Seguro que quiere eliminar la parada <?=$values_parada['poblacion']?></h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Seguro que quiere eliminar la parada <?= $values_parada['poblacion'] ?></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -466,3 +466,29 @@ foreach ($paradas as $values_parada) {
 }
 ?>
 <!--final modal eliminar parada-->
+<!--modal eliminar VIAJE COMPLETO, CON PARADAS Y RESERVAS-->
+<!--CUANDO SE ELIMINE VIAJE HAY QUE ENVIAR MENSAJE A VIAJEROS-->
+<div class="modal fade" id="ModalEliminarviaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title" id="exampleModalLabel">Está seguro que quiere eliminar el viaje <?= $datos_viaje[0]['origen'] . " - " . $datos_viaje[0]['destino'] . " el dia " . $datos_viaje[0]['fecha'] ?>, también se eliminarán las reservas y las paradas</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                    <input type="hidden" name="eliminarViaje">
+                    <input type="hidden" name="id" value="<?= $datos_viaje[0]['id'] ?>">
+                    <div class="col-md-12" style="margin-top:5%;">
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

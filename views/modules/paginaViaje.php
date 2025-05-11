@@ -44,4 +44,8 @@ if(isset($_POST['addParada']) && !empty($_POST)){
 if(isset($_POST['eliminarParada']) && !empty($_POST)){
     $eliminarParada=$viaje->ctrDeleteParada();
 }
+//eliminar viaje
+if(isset($_POST['eliminarViaje']) && !empty($_POST)){
+    $eliminarViaje=$viaje->ctrDeleteViaje();
+}
     include "views/partials/paginaViaje.view.php";

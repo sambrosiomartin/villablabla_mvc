@@ -81,6 +81,7 @@ class MdlViajes extends Tablas
             return false;
         }
     }
+
     //METODO AÑADIR PARADA A VIAJE
     static public function mdlAddParada($table,$datos){
         $conection = Conexion::conection();
@@ -111,4 +112,5 @@ class MdlViajes extends Tablas
               return false;
           }
       }
+      
 }
