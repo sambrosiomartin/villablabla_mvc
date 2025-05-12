@@ -7,7 +7,7 @@
                 <div class="d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 text-center carousel-pages">
                         <h4 class="text-white text-uppercase mb-md-3">Frente al aislamiento</h4>
-                        <h1 class="display-3 text-white mb-md-4">Comparte viaje</h1>
+                        <h1 class="display-3 text-white mb-md-4">Comparte Tu Viaje</h1>
                         <!--a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a-->
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3 text-center carousel-pages">
                             <h4 class="text-blue text-uppercase mb-md-3">Frente al aislamiento</h4>
-                            <h1 class="display-3 text-blue mb-md-4">Comparte viaje</h1>
+                            <h1 class="display-3 text-blue mb-md-4">Comparte Tu Viaje</h1>
                             <!--a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a-->
                         </div>
                     </div>
@@ -52,14 +52,14 @@
                     <form method="POST" action="">
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label for="forOrigen">Seleccione desde donde sale</label>
+                                <label class="textOrigen" for="forOrigen">Seleccione desde donde sale</label>
                                 <select name="origen" class="form-control-select" id="forOrigen" required>
                                     <option class="select-option" value="" disabled selected>Seleccione una opción de origen
                                     </option>
                                       <?php 
                                             foreach($paradas_buscador as $key => $value){
                                         ?>
-                                            <option class="select-option" value="<?=$value?>"><?=$key?></option>
+                                            <option id="selectDestino" class="select-option" value="<?=$value?>"><?=$key?></option>
                                         <?php 
                                             }
                                         ?>
@@ -67,7 +67,7 @@
 
                             </div>
                             <div class="form-group col-lg-4">
-                                <label for="forDestino">Seleccione hacia donde va</label>
+                                <label class="textDestino" for="forDestino">Seleccione hacia donde va</label>
                                 <select name="destino" class="form-control-select" id="forDestino" required>
                                     <option class="select-option" value="" disabled selected>Seleccione una opción de
                                         destino</option>
@@ -87,20 +87,20 @@
                                     aria-describedby="helpId" required>
                             </div>
                         </div>
-
+                        <!--IDEAS SI DA TIEMPO-->
                         <!--quitar acentos y poner todo en minusculas donde escriba el usuario-->
                         <!--modo predictivo en buscador-->
                         <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
+                            <div class="form-group col-lg-6" id="BlockotrosOrigenes" style="display: none;">
+                                <label class="textOrigen" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
                                     orígenes</label>
-                                <input type="text" name="otros_origenes" id="forFecha" class="form-control"
-                                    placeholder="" aria-describedby="helpId">
+                                <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
+                                    placeholder="" aria-describedby="helpId" >
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
+                            <div class="form-group col-lg-6" id="BlockotrosDestinos" style="display: none;">
+                                <label class="textDestino" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
                                     destinos</label>
-                                <input type="text" name="otros_destinos" id="forFecha" class="form-control"
+                                <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
                                     placeholder="" aria-describedby="helpId">
                             </div>
                         </div>
@@ -160,3 +160,5 @@
         </div>
     </section>
     <!-- que es villablabla End -->
+
+

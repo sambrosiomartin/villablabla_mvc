@@ -77,6 +77,7 @@
 <script src="views/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
 <script src="views/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
 <script src="views/js/scripts.js"></script> <!-- Custom scripts -->
+<script src="views/js/addedScripts.js"></script> <!--scripts añadidos para la aplicación villablabla-->
 </body>
 
 </html>

@@ -67,6 +67,14 @@
         span{
             font-weight: 900;
         }
+        .textOrigen{
+            font-weight: 900;
+            background: greenyellow;
+        }   
+        .textDestino{
+            font-weight:900;
+            background: lightblue;
+        }
     </style>
 </head>
 
