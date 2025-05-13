@@ -367,11 +367,11 @@ foreach ($usuarioValues as $values) {
                     </div>
                     <div class="col-md-6">
                         <label for="inputNumeroPlazas" class="form-label">Número de plazas</label>
-                        <input type="number" name="numero_plazas" class="form-control" id="inputNumeroPlazas" />
+                        <input type="number" name="numero_plazas" class="form-control" id="inputNumeroPlazas" required/>
                     </div>
                     <div class="col-md-6">
                         <label for="inputColor" class="form-label">Color</label>
-                        <input type="text" name="color" class="form-control" id="inputColor" placeholder="color" />
+                        <input type="text" name="color" class="form-control" id="inputColor" placeholder="color" required/>
                     </div>
 
                     <div class="col-md-12" style="margin-top:5%;">

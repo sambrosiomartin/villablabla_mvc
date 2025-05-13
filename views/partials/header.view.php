@@ -75,6 +75,14 @@
             font-weight:900;
             background: lightblue;
         }
+        .table-1{
+            border: 1px solid black; 
+            width: 100%; 
+            text-align: center;
+        }
+        td{
+            padding: 1%;
+        }
     </style>
 </head>
 

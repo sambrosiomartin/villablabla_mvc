@@ -34,7 +34,7 @@
                                 <?= $datos_conductor[0]['nombre'] . " " . $datos_conductor[0]['apellido1'] ?>
                             </td>
                             <td>
-                                <img src="views/images/users/default.jpg" alt="imagen de usuario" width="10%">
+                                <img src="<?= Utilidades::imagenUsuario($datos_conductor[0]['username'], $datos_conductor[0]['foto']) ?>" class="rounded-circle img-fluid" alt="imagen de usuario" width="10%"/>
                             </td>
                             <td>
                                 <?= $value['fecha'] ?>

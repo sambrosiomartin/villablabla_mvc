@@ -11,7 +11,7 @@ class Utilidades
             'username' => '/^[a-zA-Z0-9ñÑ-]+$/',
             'password' => '/^[a-zA-Z0-9!@#$&%*()\\-.+,]+$/',
             'telefono' => '/^[0-9+]+$/',
-            'texto' => '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ !@#$&%*()\\-.+,]+$/',
+            'texto' => '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ !@#$&%*()\\-.+,_]+$/',
             'entero' => '/^[0-9]+$/'
         );
         if (preg_match($expresion[$value_type], $value)) {
@@ -48,7 +48,7 @@ class Utilidades
     static public function imagenUsuario($carpetaImagen, $imagen)
     {
         $ruta = "views/images/users/";
-        if ($imagen != null) {
+        if ($imagen != null && $imagen != "default.jpg") {
             $imagenVista = $ruta . $carpetaImagen . "/" . $imagen;
         } else {
             $imagenVista = $ruta . "default.jpg";

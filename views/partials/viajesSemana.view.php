@@ -33,56 +33,68 @@
                     <!-- end of card -->
 
                 </div> <!-- end of col -->
-                <table style="border: 1px solid black; width: 100%; text-align: center;">
+                <?php
+                    if (!empty($viajes_semana)) {
+                ?>
+                    <table class="table-1" style="">
 
-                    <tr>
-                        <th>usuario</th>
-                        <th>foto</th>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                        <th>dia</th>
-                        <th>hora</th>
-                        <th>Regularidad</th>
-                        <th></th>
-                    </tr>
-                    <?php
-                    foreach ($viajes_semana as $value) {
-                        $usuario = tablas::showValueField('usuarios', 'nombre', 'id', 2);
-                        //var_dump($usuario);
-                    ?>
                         <tr>
-                            <td>
-                                <?= $usuario['nombre'] ?>
-                            </td>
-                            <td>
-                                <img src="views/images/users/default.jpg" alt="imagen de usuario" width="10%">
-                            </td>
-                            <td>
-                                <?= $value['origen'] ?>
-                            </td>
-                            <td>
-                                <?= $value['destino'] ?>
-                            </td>
-                            <!--convertir fecha en ingles a castellano-->
-                            <!--poner dia de la semana, para que se vea el dia de la semana del viaje-->
-                            <td>
-                                <?= $value['fecha'] ?>
-                            </td>
-                            <td>
-                                <?= $value['hora_salida'] ?>
-                            </td>
-                            <td>
-                                <?= $value['regularidad'] ?>
-                            </td>
-                            <td>
-                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>">Ir a viaje...</a></button>
-                            </td>
+                            <th>usuario</th>
+                            <th>foto</th>
+                            <th>Origen</th>
+                            <th>Destino</th>
+                            <th>dia</th>
+                            <th>hora</th>
+                            <th>Regularidad</th>
+                            <th></th>
                         </tr>
+                        <?php
+                        foreach ($viajes_semana as $value) {
+                            $usuario = tablas::showValueField('usuarios', 'nombre', 'id', 2);
+                            //var_dump($usuario);
+                        ?>
+                            <tr>
+                                <td>
+                                    <?= $usuario['nombre'] ?>
+                                </td>
+                                <td>
+                                    <img src="views/images/users/default.jpg" alt="imagen de usuario" width="10%">
+                                </td>
+                                <td>
+                                    <?= $value['origen'] ?>
+                                </td>
+                                <td>
+                                    <?= $value['destino'] ?>
+                                </td>
+                                <!--convertir fecha en ingles a castellano-->
+                                <!--poner dia de la semana, para que se vea el dia de la semana del viaje-->
+                                <td>
+                                    <?= $value['fecha'] ?>
+                                </td>
+                                <td>
+                                    <?= $value['hora_salida'] ?>
+                                </td>
+                                <td>
+                                    <?= $value['regularidad'] ?>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>">Ir a viaje...</a></button>
+                                </td>
+                            </tr>
 
-                    <?php
+                        <?php
+                        }
+                        ?>
+                    </table>
+                <?php
+                    } else {
+                ?>
+                    <div class="col-12 text-center">
+                        <h3>No hay viajes programados para esta semana</h3>
+                    </div>
+                <?php
                     }
-                    ?>
-                </table>
+                ?>
             </div> <!-- end of row -->
             <!--tabla de viajes de la semana-->
 

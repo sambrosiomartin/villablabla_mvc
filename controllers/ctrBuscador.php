@@ -14,6 +14,9 @@ class CtrBuscador
                     $origen_final = "%" . $origen . "%";
                     $destino_final = "%" . $destino . "%";
                     $values = mdlBuscador::mdlBuscar($origen_final, $destino_final, $fecha);
+                    echo "<script>
+                            window.location='inicio#buscador';
+                        </script>";
                     return $values;
                 } else {
                     echo "<script>
