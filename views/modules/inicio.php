@@ -2,6 +2,7 @@
     $paradas_buscador=array("Villablanca" => "villablanca","Ayamonte" => "ayamonte","Lepe" => "lepe", "Isla Cristina" => "islacristina" ,
     "Cartaya" => "cartaya", "Huelva centro" => "huelvacentro", "Huelva - Infanta Elena" => "infantaelena",
     "Huelva - Vázquez Díaz" => "vazquezdiaz", "Sevilla" => "sevilla", "Otros" => "otros");
+    $conductor=new CtrTablas();
     if(isset($_POST) && !empty($_POST)){
       //var_dump($_POST);
       if($_POST['origen'] != "otros"){

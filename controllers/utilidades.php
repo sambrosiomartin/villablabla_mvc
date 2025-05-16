@@ -159,6 +159,13 @@ class Utilidades
         $spanish_date = date_format($english_date, 'd-m-Y');
         return $spanish_date;
     }
+    //MODIFICADOR DE HORAS
+    static public function change_hour($hora)
+    {
+        $hora = date_create_from_format('H:i:s', $hora);
+        $hora = date_format($hora, 'H:i');
+        return $hora;
+    }
     //DE FECHA INGLESA A FECHA STRING
     static public function change_date_to_string($date)
     {

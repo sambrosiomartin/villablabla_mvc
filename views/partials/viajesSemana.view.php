@@ -34,7 +34,7 @@
 
                 </div> <!-- end of col -->
                 <?php
-                    if (!empty($viajes_semana)) {
+                if (!empty($viajes_semana)) {
                 ?>
                     <table class="table-1" style="">
 
@@ -46,19 +46,19 @@
                             <th>dia</th>
                             <th>hora</th>
                             <th>Regularidad</th>
-                            <th></th>
+                            <th>Opciones</th>
                         </tr>
                         <?php
                         foreach ($viajes_semana as $value) {
-                            $usuario = tablas::showValueField('usuarios', 'nombre', 'id', 2);
+                            $datos_conductor=$conductor->ctrShowRegister("usuarios","id",$value['id_usuario']);
                             //var_dump($usuario);
                         ?>
                             <tr>
                                 <td>
-                                    <?= $usuario['nombre'] ?>
+                                    <?= $datos_conductor[0]['nombre'] ?>
                                 </td>
                                 <td>
-                                    <img src="views/images/users/default.jpg" alt="imagen de usuario" width="10%">
+                                    <img src="<?= Utilidades::imagenUsuario($datos_conductor[0]['username'], $datos_conductor[0]['foto']) ?>" class="rounded-circle img-fluid" alt="imagen de usuario" width="10%" />
                                 </td>
                                 <td>
                                     <?= $value['origen'] ?>
@@ -66,13 +66,12 @@
                                 <td>
                                     <?= $value['destino'] ?>
                                 </td>
-                                <!--convertir fecha en ingles a castellano-->
                                 <!--poner dia de la semana, para que se vea el dia de la semana del viaje-->
                                 <td>
-                                    <?= $value['fecha'] ?>
+                                    <?= Utilidades::english_date_to_spanish($value['fecha']) ?>
                                 </td>
                                 <td>
-                                    <?= $value['hora_salida'] ?>
+                                    <?= Utilidades::change_hour($value['hora_salida']) ?>
                                 </td>
                                 <td>
                                     <?= $value['regularidad'] ?>
@@ -87,13 +86,13 @@
                         ?>
                     </table>
                 <?php
-                    } else {
+                } else {
                 ?>
                     <div class="col-12 text-center">
                         <h3>No hay viajes programados para esta semana</h3>
                     </div>
                 <?php
-                    }
+                }
                 ?>
             </div> <!-- end of row -->
             <!--tabla de viajes de la semana-->

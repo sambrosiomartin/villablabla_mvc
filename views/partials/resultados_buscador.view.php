@@ -16,17 +16,17 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>usuario</td>
-                        <td>foto</td>
-                        <td>dia</td>
-                        <td>hora</td>
-                        <td>Regularidad</td>
-                        <td>Ir a viaje...</td>
+                        <th>usuario</th>
+                        <th>foto</th>
+                        <th>dia</th>
+                        <th>hora</th>
+                        <th>Regularidad</th>
+                        <th>Opciones</th>
                     </tr>
                     <?php
 /*foreach*/ 
                     foreach ($viajes_buscados as $value) {
-                        $conductor=new CtrTablas();
+                        if(Utilidades::minimumDate($value['fecha'])){
                         $datos_conductor=$conductor->ctrShowRegister("usuarios","id",$value['id_usuario']);
                     ?>
                         <tr>
@@ -37,20 +37,21 @@
                                 <img src="<?= Utilidades::imagenUsuario($datos_conductor[0]['username'], $datos_conductor[0]['foto']) ?>" class="rounded-circle img-fluid" alt="imagen de usuario" width="10%"/>
                             </td>
                             <td>
-                                <?= $value['fecha'] ?>
+                                <?= Utilidades::english_date_to_spanish($value['fecha']) ?>
                             </td>
                             <td>
-                                <?= $value['hora_salida'] ?>
+                                <?= Utilidades::change_hour($value['hora_salida']) ?>
                             </td>
                             <td>
                                 <?= $value['regularidad'] ?>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="#" role="button">ir a viaje...</a>
+                                <a class="btn btn-primary" href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>" role="button">ir a viaje...</a>
                             </td>
                         </tr>
 <!--else-->
                     <?php
+                        }
                     }
                     ?>
                 </table>

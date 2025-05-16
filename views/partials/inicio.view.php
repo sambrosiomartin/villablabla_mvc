@@ -84,7 +84,7 @@
                             <div class="form-group col-lg-4">
                                 <label for="forFecha">Aquí elija el día y mes de su viaje</label>
                                 <input type="date" name="fecha" id="forFecha" class="form-control" placeholder=""
-                                    aria-describedby="helpId" required>
+                                    aria-describedby="helpId" />
                             </div>
                         </div>
                         <!--IDEAS SI DA TIEMPO-->

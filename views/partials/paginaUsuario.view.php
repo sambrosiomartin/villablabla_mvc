@@ -165,23 +165,27 @@
                             if ($viajeValues != null) {
                                 foreach ($viajeValues as $values) {
                                     $plazas = tablas::showValueField("automoviles", "numero_plazas", "id", $values['id_coche']);
-                                    $reservas_activas=$reserva->ctrReservasEspera($values['id']);
+                                    $reservasEspera = $reserva->ctrReservasEspera($values['id']);
                             ?>
                                     <tr>
                                         <td><?= $values['origen'] ?></td>
                                         <td><?= $values['destino'] ?></td>
-                                        <td><?= $values['fecha'] ?></td>
-                                        <td><?= $values['hora_salida'] ?></td>
+                                        <td>
+                                            <?= Utilidades::english_date_to_spanish($values['fecha']) ?>
+                                        </td>
+                                        <td>
+                                            <?= Utilidades::change_hour($values['hora_salida']) ?>
+                                        </td>
                                         <td><?= $plazas['numero_plazas'] ?></td>
                                         <td><?= $values['regularidad'] ?></td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>">Ir a viaje...</a></button>
-                                            <?php 
-                                                if($reservas_activas==1){
+                                            <?php
+                                            if ($reservasEspera == true) {
                                             ?>
                                                 <button type="button" class="btn btn-outline-secondary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>#reservas">Reservas en espera</a></button>
                                             <?php
-                                                }
+                                            }
                                             ?>
                                         </td>
                                     </tr>
@@ -199,6 +203,7 @@
                 </div>
             </div>
         </div>
+        <!--tabla de reservas activas-->
         <div class="row mb-5">
             <div class="container rounded bg-white">
                 <div class="row">
@@ -210,8 +215,39 @@
                                 <th>Destino</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
+                                <th>Número de plazas reservadas</th>
+                                <th>Estado</th>
                                 <th>Opciones</th>
                             </tr>
+                            <?php
+                            //var_dump($reservas_activas);
+                            if ($reservas_activas != null) {
+                                foreach ($reservas_activas as $value) {
+                                    $viaje = tablas::showRegister("viajes", "id", $value['id_viaje']);
+                            ?>
+                                    <tr>
+                                        <td><?= $viaje[0]['origen'] ?></td>
+                                        <td><?= $viaje[0]['destino'] ?></td>
+                                        <td>
+                                            <?= Utilidades::english_date_to_spanish($viaje[0]['fecha']) ?>
+                                        </td>
+                                        <td>
+                                            <?= Utilidades::change_hour($viaje[0]['hora_salida']) ?>
+                                        </td>
+                                        <td>
+                                            <?= $value['num_plazas_reservadas'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $value['estado'] ?>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id_viaje'] ?>">Ir a viaje...</a></button>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
                         </table>
                     </div>
                 </div>
@@ -348,7 +384,7 @@ foreach ($usuarioValues as $values) {
 <div class="modal fade" id="ModalRegistroAuto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header text-center">
                 <h5 class="modal-title" id="exampleModalLabel">Introduzca los datos del automovil que usará para los viajes</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -359,7 +395,7 @@ foreach ($usuarioValues as $values) {
                     <input type="hidden" name="registrar_vehiculo">
                     <div class="col-md-6">
                         <label for="inputMarca" class="form-label">Marca</label>
-                        <input type="text" name="marca" class="form-control" id="inputMarca" required />
+                        <input type="text" name="marca" class="form-control" id="inputMarca" placeholder="marca" required />
                     </div>
                     <div class="col-md-6">
                         <label for="inputModelo" class="form-label">Modelo</label>
@@ -367,11 +403,11 @@ foreach ($usuarioValues as $values) {
                     </div>
                     <div class="col-md-6">
                         <label for="inputNumeroPlazas" class="form-label">Número de plazas</label>
-                        <input type="number" name="numero_plazas" class="form-control" id="inputNumeroPlazas" required/>
+                        <input type="number" name="numero_plazas" class="form-control" id="inputNumeroPlazas" placeholder="Número de plazas" required />
                     </div>
                     <div class="col-md-6">
                         <label for="inputColor" class="form-label">Color</label>
-                        <input type="text" name="color" class="form-control" id="inputColor" placeholder="color" required/>
+                        <input type="text" name="color" class="form-control" id="inputColor" placeholder="color" required />
                     </div>
 
                     <div class="col-md-12" style="margin-top:5%;">
@@ -394,7 +430,7 @@ foreach ($automovilValues as $values) {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Introduzca los datos del automovil que usará para los viajes</h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Introduzca los datos del automovil que usará para los viajes</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -443,7 +479,7 @@ foreach ($automovilValues as $values) {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Está seguro de que quiere eliminar este vehículo</h3>
+                    <h3 class="modal-title text-center" id="exampleModalLabel">Está seguro de que quiere eliminar este vehículo</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

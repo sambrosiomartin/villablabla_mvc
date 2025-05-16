@@ -6,9 +6,16 @@
             $conection=Conexion::conection();
             $sql="SELECT * FROM viajes";
 //PARA EL BUSCADOR PONER LOS % Y COMILLAS DENTRO DE LAS COMAS PARA QUE NO HAYA ERRORES
-            $sql.=" WHERE origen LIKE ? AND destino LIKE ? AND fecha LIKE ?";
-            $query = $conection->prepare($sql);
-            $query->execute(array($origen, $destino, $fecha));
+            $sql.=" WHERE origen LIKE ? AND destino LIKE ? ";
+            if(!empty($fecha)){
+                $sql.=" AND fecha LIKE ?";
+                $query = $conection->prepare($sql);
+                $query->execute(array($origen, $destino, $fecha));
+            }
+            else{
+                $query = $conection->prepare($sql);
+                $query->execute(array($origen, $destino));
+            }
             $values = $query->fetchAll();
             return $values;
         }
