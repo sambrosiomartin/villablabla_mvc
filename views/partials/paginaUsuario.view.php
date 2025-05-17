@@ -145,6 +145,7 @@
                 </div>
             </div>
         </div>
+        <!--TABLA DE VIAJES ACTIVOS POR EL CONDUCTOR-->
         <div class="row mb-5">
             <div class="container rounded bg-white">
                 <div class="row">
@@ -156,7 +157,7 @@
                                 <th>Destino</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
-                                <th>Número de plazas</th>
+                                <th>Plazas disponibles</th>
                                 <th>Regularidad</th>
                                 <th>Opciones</th>
                             </tr>
@@ -165,6 +166,8 @@
                             if ($viajeValues != null) {
                                 foreach ($viajeValues as $values) {
                                     $plazas = tablas::showValueField("automoviles", "numero_plazas", "id", $values['id_coche']);
+                                    $plazasOcupadas = $reserva->ctrAsientosOcupados($values['id']);
+                                    $plazasLibres = $plazas['numero_plazas'] - $plazasOcupadas['suma'];
                                     $reservasEspera = $reserva->ctrReservasEspera($values['id']);
                             ?>
                                     <tr>
@@ -176,7 +179,7 @@
                                         <td>
                                             <?= Utilidades::change_hour($values['hora_salida']) ?>
                                         </td>
-                                        <td><?= $plazas['numero_plazas'] ?></td>
+                                        <td><?= $plazasLibres ?></td>
                                         <td><?= $values['regularidad'] ?></td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>">Ir a viaje...</a></button>
@@ -246,6 +249,8 @@
                                     </tr>
                             <?php
                                 }
+                            } else {
+                                echo "<h4>No Hay reservas activas en este momento</h4>";
                             }
                             ?>
                         </table>
@@ -266,16 +271,37 @@
                                     <th>Destino</th>
                                     <th>Fecha</th>
                                     <th>Hora</th>
+                                    <th>Ocupación</th>
                                     <th>Regularidad</th>
-                                    <th>Opciones</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <!--AQUI COMIENZA EL FOREACH-->
-                                <?php //foreach ($values_table as $value) { 
+                                <?php
+                                if ($viajesPasados != null) {
+                                    foreach ($viajesPasados as $values) {
+                                        $plazas = tablas::showValueField("automoviles", "numero_plazas", "id", $values['id_coche']);
+                                        $plazasOcupadas = $reserva->ctrAsientosOcupados($values['id']);
                                 ?>
-
-                                <?php //} 
+                                        <tr>
+                                            <td><?= $values['id'] ?></td>
+                                            <td><?= $values['origen'] ?></td>
+                                            <td><?= $values['destino'] ?></td>
+                                            <td>
+                                                <?= Utilidades::english_date_to_spanish($values['fecha']) ?>
+                                            </td>
+                                            <td>
+                                                <?= Utilidades::change_hour($values['hora_salida']) ?>
+                                            </td>
+                                            <td><?= $plazasOcupadas['suma'] ?></td>
+                                            <td><?= $values['regularidad'] ?></td>
+                                        </tr>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<h4>No encontrados registros antiguos</h4>";
+                                }
                                 ?>
                                 <!--AQUI TERMINA EL FOREACH-->
                             <tfoot>
@@ -285,6 +311,7 @@
                 </div>
             </div>
         </div>
+        <!--TABLA DE RESERVAS PASADAS-->
         <div class="row mb-5">
             <div class="container rounded bg-white">
                 <div class="row">
@@ -298,15 +325,40 @@
                                     <th>Destino</th>
                                     <th>Fecha</th>
                                     <th>Hora</th>
-                                    <th>Opciones</th>
+                                    <th>Plazas reservadas</th>
+                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!--AQUI COMIENZA EL FOREACH-->
-                                <?php //foreach ($values_table as $value) { 
+                                <?php
+                                //var_dump($reservas_activas);
+                                if ($reservas_pasadas != null) {
+                                    foreach ($reservas_pasadas as $value) {
+                                        $viaje = tablas::showRegister("viajes", "id", $value['id_viaje']);
                                 ?>
-
-                                <?php //} 
+                                        <tr>
+                                            <td><?=$value['id']?></td>
+                                            <td><?= $viaje[0]['origen'] ?></td>
+                                            <td><?= $viaje[0]['destino'] ?></td>
+                                            <td>
+                                                <?= Utilidades::english_date_to_spanish($viaje[0]['fecha']) ?>
+                                            </td>
+                                            <td>
+                                                <?= Utilidades::change_hour($viaje[0]['hora_salida']) ?>
+                                            </td>
+                                            <td>
+                                                <?= $value['num_plazas_reservadas'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $value['estado']?>
+                                            </td>
+                                        </tr>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<h4>No Hay reservas activas en este momento</h4>";
+                                }
                                 ?>
                                 <!--AQUI TERMINA EL FOREACH-->
                             <tfoot>

@@ -5,14 +5,17 @@
         static public function mdlBuscar($origen, $destino, $fecha){
             $conection=Conexion::conection();
             $sql="SELECT * FROM viajes";
+            $order=" ORDER BY fecha";
 //PARA EL BUSCADOR PONER LOS % Y COMILLAS DENTRO DE LAS COMAS PARA QUE NO HAYA ERRORES
             $sql.=" WHERE origen LIKE ? AND destino LIKE ? ";
             if(!empty($fecha)){
                 $sql.=" AND fecha LIKE ?";
+                $sql.=$order;
                 $query = $conection->prepare($sql);
                 $query->execute(array($origen, $destino, $fecha));
             }
             else{
+                $sql.=$order;
                 $query = $conection->prepare($sql);
                 $query->execute(array($origen, $destino));
             }

@@ -30,9 +30,11 @@
     //crud viajes
     $viaje=new CtrViajes();
     $table3="viajes";
-    $viajeValues=$viaje->ctrViajesActivos($usuarioValues[0]['id']);
+    $viajeValues=$viaje->ctrViajesActivos($usuarioValues[0]['id'],">=");
+    $viajesPasados=$viaje->ctrViajesActivos($usuarioValues[0]['id'],"<");
     //controlador reservas
     $reserva=new CtrReservas();
-    $reservas_activas=$reserva->ctrReservasActivas();
-    var_dump($reservas_activas);
+    $reservas_activas=$reserva->ctrReservasActivas(true);
+    $reservas_pasadas=$reserva->ctrReservasActivas(false);
+    //var_dump($reservas_activas);
     include "views/partials/paginaUsuario.view.php";

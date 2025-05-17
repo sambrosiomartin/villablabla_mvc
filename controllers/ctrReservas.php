@@ -96,18 +96,27 @@ class CtrReservas
                 </script>";
         }
     }
-    public function ctrReservasActivas(){
+    public function ctrReservasActivas($activa){
         $table="reservas";
         $usuario=Tablas::showValueField("usuarios","id","username",$_SESSION['username']);
         $reservas=Tablas::showRegister($table,"id_usuario",$usuario['id']);
         $reservas_activas=array();
+        $reservas_pasivas=array();
         foreach($reservas as $value){
             $viaje=Tablas::showRegister("viajes","id",$value['id_viaje']);
             $viaje_activo=Utilidades::minimumDate($viaje[0]['fecha']);
             if($value['estado']!="denegada" && $viaje_activo==true){
                 $reservas_activas[]=$value;
             }
+            else{
+                $reservas_pasadas[]=$value;
+            }
         }
-        return $reservas_activas;
-    }
+        if($activa==true){
+            return $reservas_activas;
+        }
+        else{
+            return $reservas_pasadas;
+        }
+    }   
 }

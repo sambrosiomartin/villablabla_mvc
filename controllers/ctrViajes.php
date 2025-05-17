@@ -26,9 +26,9 @@ class CtrViajes
         return $finalvalues;
     }
     //metodo listar viajes activos del usuario conductor
-    public function ctrViajesActivos($value)
+    public function ctrViajesActivos($value,$signo)
     {
-        $values = MdlViajes::mdlViajesActivos($value);
+        $values = MdlViajes::mdlViajesActivos($value,$signo);
         return $values;
     }
     //metodo listar viajes activos y con asientos disponibles del usuario

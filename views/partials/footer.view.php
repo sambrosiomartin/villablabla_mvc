@@ -66,8 +66,16 @@
 
 <!-- Scripts -->
 <script>
-         let table = new DataTable('#myTable');
-         let table2 = new DataTable('#myTable2');
+    let table = new DataTable('#myTable', {
+        language: {
+            url: '//cdn.datatables.net/plug-ins/2.3.1/i18n/es-ES.json',
+        },
+    });
+    let table2 = new DataTable('#myTable2', {
+        language: {
+            url: '//cdn.datatables.net/plug-ins/2.3.1/i18n/es-ES.json',
+        },
+    });
 </script>
 <script src="views/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
 <script src="views/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
