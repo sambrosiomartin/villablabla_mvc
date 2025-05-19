@@ -49,4 +49,19 @@ class Tablas
             return false;
         }
     }
+    //esta funcion se puede unir a shorregister
+    static public function showLastRow($table, $field, $value){
+         $conection = Conexion::conection();
+        if ($field == null) {
+            $sql = "SELECT * FROM " . $table." ORDER BY id DESC LIMIT 1";
+            $query = $conection->query($sql);
+            $valors = $query->fetchAll();
+        } else {
+            $sql = "SELECT * FROM " . $table . " WHERE " . $field . " = ? ORDER BY id DESC LIMIT 1";
+            $query = $conection->prepare($sql);
+            $query->execute(array($value));
+            $valors = $query->fetchAll();
+        }
+        return $valors;
+    }
 }

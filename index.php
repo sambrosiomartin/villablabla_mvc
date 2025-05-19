@@ -7,6 +7,7 @@
    require_once "models/mdlViajes.php";
    require_once "models/mdlAutomovil.php";
    require_once "models/mdlReservas.php";
+   require_once "models/mdlOpciones.php";
 //CONTROLADORES
    require_once "controllers/ctrPlantilla.php";
    require_once "controllers/utilidades.php";
@@ -16,5 +17,7 @@
    require_once "controllers/ctrViajes.php";
    require_once "controllers/ctrAutomovil.php";
    require_once "controllers/ctrReservas.php";
+   require_once "controllers/ctrOpciones.php";
+   //ENRUTADOR
    $plantilla=new CtrPlantilla();
     $plantilla->ctrPlantilla();

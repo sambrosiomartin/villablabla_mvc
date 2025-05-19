@@ -14,33 +14,41 @@
                     <input type="time" name="hora_salida" class="form-control" id="inputHoraSalida" required />
                 </div>
                 <div class="col-md-6">
-                    <label for="forOrigen">Seleccione desde donde sale</label>
+                    <label class="textOrigen" for="forOrigen">Seleccione desde donde sale</label>
                     <select name="origen" class="form-control-select" id="forOrigen" required>
                         <option class="select-option" value="" disabled selected>Seleccione una opción de origen
                         </option>
-                        <option class="select-option" value="villablanca">VILLABLANCA</option>
-                        <option class="select-option" value="lepe">Lepe</option>
-                        <option class="select-option" value="otros">Otros</option>
+                        <?php
+                        foreach ($paradas_buscador as $key => $value) {
+                        ?>
+                            <option id="selectDestino" class="select-option" value="<?= $value ?>"><?= $key ?></option>
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="forOrigen">Seleccione su destino</label>
+                    <label class="textDestino" for="forDestino">Seleccione su destino</label>
                     <select name="destino" class="form-control-select" id="forDestino" required>
-                        <option class="select-option" value="" disabled selected>Seleccione una opción de destino
-                        </option>
-                        <option class="select-option" value="villablanca">VILLABLANCA</option>
-                        <option class="select-option" value="lepe">Lepe</option>
-                        <option class="select-option" value="otros">Otros</option>
+                        <option class="select-option" value="" disabled selected>Seleccione una opción de
+                            destino</option>
+                        <?php
+                        foreach ($paradas_buscador as $key => $value) {
+                        ?>
+                            <option class="select-option" value="<?= $value ?>"><?= $key ?></option>
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
-                <div class="form-group col-lg-6">
-                    <label for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
+                <div class="form-group col-lg-6" id="BlockotrosOrigenes" style="display: none;">
+                    <label class="textOrigen" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
                         orígenes</label>
                     <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
                         placeholder="" aria-describedby="helpId">
                 </div>
-                <div class="form-group col-lg-6">
-                    <label for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
+                <div class="form-group col-lg-6" id="BlockotrosDestinos" style="display: none;">
+                    <label class="textDestino" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
                         destinos</label>
                     <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
                         placeholder="" aria-describedby="helpId">
@@ -88,8 +96,8 @@
     </div>
 </div>
 </div>
-<?php 
-    var_dump($_POST);
+<?php
+//var_dump($_POST);
 ?>
 
 <!---FIN FORMULARIO CREAR VIAJE-->

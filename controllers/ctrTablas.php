@@ -11,4 +11,8 @@ class CtrTablas
         $values=Tablas::showValueField($table,$field1,$field2,$value);
         return $values;
     }
+    public function ctrShowLastRow($table,$field,$value){
+        $values=Tablas::showLastRow($table,$field,$value);
+        return $values;
+    }
 }

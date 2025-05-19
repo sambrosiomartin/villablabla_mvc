@@ -85,7 +85,7 @@ class CtrViajes
                     if ($viaje) {
                         echo "<script>
                             window.alert('El viaje se ha creado con éxito');
-                            window.location='paginaUsuario';
+                            window.location='insertarOpciones';
                         </script>";
                         return true;
                     } else {
