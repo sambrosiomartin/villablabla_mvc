@@ -7,7 +7,7 @@ class MdlUsers extends Tablas
     static public function mdlRegister($table, $datos)
     {
         $conection = Conexion::conection();
-        $sql = "INSERT INTO " . $table . " ( nombre, apellido1, apellido2, username, password, telefono, foto, direccion, email) VALUES (?,?,?,?,?,?,?,?,?) ";
+        $sql = "INSERT INTO " . $table . " ( nombre, apellido1, apellido2, username, password, telefono, foto, direccion, email, tipoUsuario) VALUES (?,?,?,?,?,?,?,?,?,?) ";
         $query = $conection->prepare($sql);
         if ($query->execute(array(
             $datos['nombre'],
@@ -18,7 +18,8 @@ class MdlUsers extends Tablas
             $datos['telefono'],
             $datos['foto'],
             $datos['direccion'],
-            $datos['email']
+            $datos['email'],
+            $datos['tipoUsuario']
         ))) {
             return true;
         } else {

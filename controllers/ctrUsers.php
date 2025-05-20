@@ -38,7 +38,8 @@ class CtrUsers
                         "telefono" => $_POST['telefono'],
                         "foto" => $imagen,
                         "direccion" => $direccion,
-                        "email" => $_POST['email']
+                        "email" => $_POST['email'],
+                        "tipoUsuario" => $_POST['tipoUsuario']
                     );
                     $insert = MdlUsers::mdlRegister($table, $datos);
                     if ($insert == true) {
@@ -136,10 +137,18 @@ class CtrUsers
                 $encriptada = Utilidades::encriptPassword($_POST['password']);
                 if (!empty($query) && $query[0]['username'] == $_POST['username'] && $query[0]['password'] == $encriptada) {
                     $_SESSION['username'] = $_POST['username'];
-                    echo "<script>
+                    $_SESSION['tipoUsuario'] = $query[0]['tipoUsuario'];
+                    if ($_SESSION['tipoUsuario'] == "administrador") {
+                        echo "<script>
+                        window.alert('Bienvenido Administrador');
+                        window.location='admin/inicio';
+                        </script>";
+                    } else {
+                        echo "<script>
                         window.alert('Se ha logueado con éxito');
                         window.location='inicio';
-                    </script>";
+                        </script>";
+                    }
                 } else {
                     echo "<script>
                         window.alert('El usuario o la contraseña es incorrecto');

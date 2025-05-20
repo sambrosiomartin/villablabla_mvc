@@ -177,6 +177,10 @@ class Utilidades
         $fecha_completa = $dia . " de " . $meses[$mes_i - 1];
         return $fecha_completa;
     }
+    static public function dayName($date){
+        $dias=array('lunes','martes','miércoles','jueves','viernes','sábado','domingo');
+        
+    }
     static public function minimumDate($date)
     {
         $fechaMinima = new DateTime(date("Y-m-d"));

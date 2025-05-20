@@ -40,6 +40,7 @@
                         <input type="file" id="inputFoto" class="imagen" name="foto">
                         <p class="help-block">Peso máximo de la foto: 2Mb</p>
                     </div>
+                    <input type="hidden" name="tipoUsuario" value="usuario"/>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Enviar datos</button>
                     </div>

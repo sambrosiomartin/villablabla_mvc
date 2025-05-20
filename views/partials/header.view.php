@@ -83,6 +83,9 @@
         td{
             padding: 1%;
         }
+        h2{
+            color: blueviolet;
+        }
     </style>
 </head>
 

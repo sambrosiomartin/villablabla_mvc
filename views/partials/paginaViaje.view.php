@@ -2,7 +2,7 @@
     <div class="container py-5">
         <!--titulo-->
         <div style="text-align: center;">
-            <h2>Viaje <b><?= $datos_viaje[0]['origen'] ?> - <b><?= $datos_viaje[0]['destino'] ?></b></h2>
+            <h2> <b><?= $datos_viaje[0]['origen'] ?> - <b><?= $datos_viaje[0]['destino'] ?></b></h2>
         </div>
         <!--inicio datos viaje-->
         <div class="row">
