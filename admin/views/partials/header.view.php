@@ -44,7 +44,8 @@
           <ul class="nav navbar-nav">
            <li class="active"><a href="inicio"><i class='glyphicon glyphicon-film'></i> BackEnd PortFolio</a></li>
 		       <li><a href="../inicio" target="_blank"><i class='glyphicon glyphicon-blackboard'></i> FrontEnd PortFolio</a></li>
-           <li><a href="logout" target="_blank"></i> Logout</a></li>
+           <li><a href="../logout"> Logout</a></li>
+           <li>Bienvenido <?=$_SESSION['username']?></li>
           </ul>
         </li>
       </div>
