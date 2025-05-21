@@ -15,7 +15,7 @@
         <div style="text-align: center;">
             <h2>Página de usuario</h2>
         </div>
-
+<!--DATOS DEL USUARIO-->
         <div class="row">
             <div class="container rounded bg-white mb-5">
                 <div class="row">
@@ -84,6 +84,7 @@
                 </div>
             </div>
         </div>
+<!--DATOS DEL AUTOMOVIL Y OPCIONES DE CRUD-->
         <div class="row mb-5">
             <div class="container rounded bg-white">
                 <div class="row">
@@ -145,7 +146,7 @@
                 </div>
             </div>
         </div>
-        <!--TABLA DE VIAJES ACTIVOS POR EL CONDUCTOR-->
+<!--TABLA DE VIAJES ACTIVOS POR EL CONDUCTOR-->
         <div class="row mb-5">
             <div class="container rounded bg-white">
                 <div class="row">
@@ -182,11 +183,11 @@
                                         <td><?= $plazasLibres ?></td>
                                         <td><?= $values['regularidad'] ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>">Ir a viaje...</a></button>
+                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>" target="_blank" rel="noopener">Ir a viaje...</a></button>
                                             <?php
                                             if ($reservasEspera == true) {
                                             ?>
-                                                <button type="button" class="btn btn-outline-secondary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>#reservas">Reservas en espera</a></button>
+                                                <button type="button" class="btn btn-outline-secondary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>#reservas" target="_blank" rel="noopener">Reservas en espera</a></button>
                                             <?php
                                             }
                                             ?>
@@ -199,14 +200,15 @@
                             }
                             ?>
                         </table>
+<!--botón de creación de viaje crearviaje-->
                         <div style="margin:2% 2%;">
-                            <button type="button" class="btn btn-primary"><a href="crearViaje" style="color:white; text-decoration:none;">Crear Viaje</a></button>
+                            <button type="button" class="btn btn-primary"><a href="crearViaje" style="color:white; text-decoration:none;" target="_blank" rel="noopener">Crear Viaje</a></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--tabla de reservas activas-->
+<!--tabla de reservas activas-->
         <div class="row mb-5">
             <div class="container rounded bg-white">
                 <div class="row">
@@ -244,7 +246,7 @@
                                             <?= $value['estado'] ?>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id_viaje'] ?>">Ir a viaje...</a></button>
+                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id_viaje'] ?>" target="_blank" rel="noopener">Ir a viaje...</a></button>
                                         </td>
                                     </tr>
                             <?php

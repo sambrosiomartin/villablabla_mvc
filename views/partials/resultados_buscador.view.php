@@ -46,7 +46,7 @@
                                 <?= $value['regularidad'] ?>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>" role="button">ir a viaje...</a>
+                                <a class="btn btn-primary" href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>" role="button" target="_blank" rel="noopener">ir a viaje...</a>
                             </td>
                         </tr>
 <!--else-->
