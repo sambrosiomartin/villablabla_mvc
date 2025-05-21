@@ -24,3 +24,8 @@
 *INCLUIR EN DOCUMENTACIÓN, ORIGEN DE PLUGINS, FORMATOS, TÉCNICAS, ETC.
 *-TRADUCCIÓN DE DATATABLES: https://datatables.net/plug-ins/i18n/Spanish.html
 *SI TE INTENTAS LOGUEAR 3 VECES, TE BLOQUEA
+
+*PARA DOCUMENTACIÓN
+*ABRIR ENLACES EN OTRA PESTAÑA: target="_blank" rel="noopener" EN LAS ETIQUETAS  <a>
+**target="_blank" para abrir nueva pestaña
+**rel="noopener" para mejorar seguridad
