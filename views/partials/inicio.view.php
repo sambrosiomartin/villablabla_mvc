@@ -51,58 +51,62 @@
                 <div class="form-container">
                     <form method="POST" action="">
                         <div class="row">
-                            <div class="form-group col-lg-4">
-                                <label class="textOrigen" for="forOrigen">Seleccione desde donde sale</label>
+                            <div class="form-group col-lg-6 text-center">
+                                <label class="textOrigen subrayado-1" for="forOrigen">Seleccione desde donde sale</label>
                                 <select name="origen" class="form-control-select" id="forOrigen" required>
                                     <option class="select-option" value="" disabled selected>Seleccione una opción de origen
                                     </option>
-                                      <?php 
-                                            foreach($paradas_buscador as $key => $value){
-                                        ?>
-                                            <option id="selectDestino" class="select-option" value="<?=$value?>"><?=$key?></option>
-                                        <?php 
-                                            }
-                                        ?>
+                                    <?php
+                                    foreach ($paradas_buscador as $key => $value) {
+                                    ?>
+                                        <option id="selectDestino" class="select-option" value="<?= $value ?>"><?= $key ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
-
+                                <!--input oculto de otros origenes--->
+                                <div class="col-lg-12" id="BlockotrosOrigenes" style="display: none;">
+                                    <label class="textOrigen subrayado-1" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
+                                        orígenes</label>
+                                    <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
+                                        placeholder="" aria-describedby="helpId">
+                                </div>
                             </div>
-                            <div class="form-group col-lg-4">
-                                <label class="textDestino" for="forDestino">Seleccione hacia donde va</label>
+                            <div class="form-group col-lg-6 text-center">
+                                <label class="textDestino subrayado-2" for="forDestino">Seleccione hacia donde va</label>
                                 <select name="destino" class="form-control-select" id="forDestino" required>
                                     <option class="select-option" value="" disabled selected>Seleccione una opción de
                                         destino</option>
-                                        <?php 
-                                            foreach($paradas_buscador as $key => $value){
-                                        ?>
-                                            <option class="select-option" value="<?=$value?>"><?=$key?></option>
-                                        <?php 
-                                            }
-                                        ?>
+                                    <?php
+                                    foreach ($paradas_buscador as $key => $value) {
+                                    ?>
+                                        <option class="select-option" value="<?= $value ?>"><?= $key ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
+                                  <!--input oculto de otros origenes--->
+                                <div class="col-lg-12" id="BlockotrosDestinos" style="display: none;">
+                                    <label class="textDestino subrayado-2" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
+                                        destinos</label>
+                                    <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
+                                        placeholder="" aria-describedby="helpId">
+                                </div>
                             </div>
 
-                            <div class="form-group col-lg-4">
-                                <label for="forFecha">Aquí elija el día y mes de su viaje</label>
-                                <input type="date" name="fecha" id="forFecha" class="form-control" placeholder=""
-                                    aria-describedby="helpId" />
-                            </div>
+
                         </div>
                         <!--IDEAS SI DA TIEMPO-->
                         <!--quitar acentos y poner todo en minusculas donde escriba el usuario-->
                         <!--modo predictivo en buscador-->
-                        <div class="row">
-                            <div class="form-group col-lg-6" id="BlockotrosOrigenes" style="display: none;">
-                                <label class="textOrigen" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
-                                    orígenes</label>
-                                <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
-                                    placeholder="" aria-describedby="helpId" >
+                        <div class="row text-center">
+                            <div class="col-lg-3"></div>
+                            <div class="form-group col-lg-6">
+                                <label class="subrayado-3" for="forFecha">Aquí elija el día y mes de su viaje</label>
+                                <input type="date" name="fecha" id="forFecha" class="form-control" placeholder=""
+                                    aria-describedby="helpId" />
                             </div>
-                            <div class="form-group col-lg-6" id="BlockotrosDestinos" style="display: none;">
-                                <label class="textDestino" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
-                                    destinos</label>
-                                <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
-                                    placeholder="" aria-describedby="helpId">
-                            </div>
+
                         </div>
                         <div class="form-group col-lg-12 text-center">
                             <button type="submit" class="form-control-submit-button col-4">Pulse aquí para buscar
@@ -123,42 +127,40 @@
         include "views/partials/resultados_buscador.view.php";
     }
     ?>
-</section> 
+</section>
 <!-- end of section buscador -->
 <!-- que es villablabla Start -->
 <section id="about" class="container-fluid py-5 about-style">
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="views/images/about/about1.jpg" style="object-fit: cover;">
-                    </div>
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="views/images/about/about1.jpg" style="object-fit: cover;">
                 </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">¿Que es Villablabla?</h6>
-                        <h3 class="mb-3">Una aplicación para que puedas moverte libremente por tu zona</h3>
-                        <p>En las últimas decadas, las distancias se han acortado gracias a la evolución de los medios de transporte. 
-                            Sin embargo, cuando vives en una zona rural aislada o que carece de medios de transporte eficaces, las distancias
-                            son igual de grandes que hace 50 años. Donde las grandes aplicaciones no llegan, está <span>VILLABLABLA</span> para 
-                            que puedas buscar a un vecino de tu zona que vaya a donde necesitas ir y compartir el coche y los gastos de viaje con esa persona. 
-                            
-                            <h4>Donde no llega nadie, queremos llegar nosotr@s.</h4>
-                        </p>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <img class="img-fluid" src="img/about-1.jpg" alt="">
-                            </div>
-                            <div class="col-6">
-                                <img class="img-fluid" src="img/about-2.jpg" alt="">
-                            </div>
+            </div>
+            <div class="col-lg-6 pt-5 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">¿Que es Villablabla?</h6>
+                    <h3 class="mb-3">Una aplicación para que puedas moverte libremente por tu zona</h3>
+                    <p>En las últimas decadas, las distancias se han acortado gracias a la evolución de los medios de transporte.
+                        Sin embargo, cuando vives en una zona rural aislada o que carece de medios de transporte eficaces, las distancias
+                        son igual de grandes que hace 50 años. Donde las grandes aplicaciones no llegan, está <span>VILLABLABLA</span> para
+                        que puedas buscar a un vecino de tu zona que vaya a donde necesitas ir y compartir el coche y los gastos de viaje con esa persona.
+
+                    <h4>Donde no llega nadie, queremos llegar nosotr@s.</h4>
+                    </p>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <img class="img-fluid" src="img/about-1.jpg" alt="">
                         </div>
-                        <a href="#buscador" class="btn btn-primary mt-1">Busca tu viaje ahora...</a>
+                        <div class="col-6">
+                            <img class="img-fluid" src="img/about-2.jpg" alt="">
+                        </div>
                     </div>
+                    <a href="#buscador" class="btn btn-primary mt-1">Busca tu viaje ahora...</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- que es villablabla End -->
-
-
+    </div>
+</section>
+<!-- que es villablabla End -->

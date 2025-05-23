@@ -40,12 +40,10 @@
           </button>
           <a class="navbar-brand" href="#"></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
            <li class="active"><a href="inicio"><i class='glyphicon glyphicon-film'></i> BackEnd PortFolio</a></li>
 		       <li><a href="../inicio" target="_blank"><i class='glyphicon glyphicon-blackboard'></i> FrontEnd PortFolio</a></li>
            <li><a href="../logout"> Logout</a></li>
-           <li>Bienvenido <?=$_SESSION['username']?></li>
           </ul>
         </li>
       </div>

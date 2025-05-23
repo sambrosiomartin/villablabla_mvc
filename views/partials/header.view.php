@@ -86,6 +86,21 @@
         h2{
             color: blueviolet;
         }
+        .subrayado-1{
+            background: none;
+            color: #007bff;
+            text-decoration: underline;
+        }
+         .subrayado-2{
+            background: none;
+            color: #ff556e;
+            text-decoration: underline;
+        }
+        .subrayado-3{
+            color: purple;
+            font-weight: 900;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
