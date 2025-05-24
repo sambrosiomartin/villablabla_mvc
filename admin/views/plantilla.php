@@ -10,7 +10,7 @@ if (isset($_SESSION)) {
                 
             ) {
 //SOLO ES NECESARIO QUE HAYA LOGOUT PORQUE EL LOGIN Y/O REGISTER ESTARÍAN EN LA PAGINA PRINCIPAL                    
-                    if (!isset($_SESSION['username'])) {
+                    if (isset($_SESSION['username'])) {
                         if ($_GET['ruta'] != "logout" ) {
                             include ("views/modulos/" . $_GET['ruta'] . ".php");
                         }

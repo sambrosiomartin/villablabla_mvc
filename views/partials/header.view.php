@@ -47,9 +47,7 @@
         .button-padding{
             padding: 2.5%;   
         }
-        .carousel-margin{
-            margin-top: 7%;
-        }
+        
         .navegador-caracteristicas{
             background:#E9F1FA;
         }
@@ -119,7 +117,7 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top navegador-caracteristicas " >
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom  navegador-caracteristicas " >
         <div class="container">
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Sync</a> -->

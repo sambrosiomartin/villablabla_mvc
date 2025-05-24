@@ -5,6 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bootstrap demo</title>
+   <!--JS DATATABLES-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <!--CSS DATATABLES-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+  <!--cdn y css bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
@@ -152,17 +159,7 @@
             </div>
           </div>
         </div>
-        <div class="col py-3">
-          <h3>Left Sidebar with Submenus</h3>
-          <p class="lead">
-            An example 2-level sidebar with collasible menu items. The menu functions like an "accordion" where only a single
-            menu is be open at a time. While the sidebar itself is not toggle-able, it does responsively shrink in width on smaller screens.</p>
-          <ul class="list-unstyled">
-            <li>
-              <h5>Responsive</h5> shrinks in width, hides text labels and collapses to icons only on mobile
-            </li>
-          </ul>
-        </div>
+       
       </div>
     </div>
   </section>
