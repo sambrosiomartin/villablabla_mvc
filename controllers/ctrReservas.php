@@ -101,7 +101,7 @@ class CtrReservas
         $usuario=Tablas::showValueField("usuarios","id","username",$_SESSION['username']);
         $reservas=Tablas::showRegister($table,"id_usuario",$usuario['id']);
         $reservas_activas=array();
-        $reservas_pasivas=array();
+        $reservas_pasadas=array();
         foreach($reservas as $value){
             $viaje=Tablas::showRegister("viajes","id",$value['id_viaje']);
             $viaje_activo=Utilidades::minimumDate($viaje[0]['fecha']);
