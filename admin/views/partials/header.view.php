@@ -95,7 +95,7 @@
                   <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="viajes" class="nav-link px-0 align-middle">
                   <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Viajes</span></a>
               </li>
               <li>
@@ -103,10 +103,10 @@
                   <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Lugares</span></a>
                 <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                   <li class="w-100">
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Orígenes</span></a>
+                    <a href="origenes" class="nav-link px-0"> <span class="d-none d-sm-inline">Orígenes</span></a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Destinos</span></a>
+                    <a href="destinos" class="nav-link px-0"> <span class="d-none d-sm-inline">Destinos</span></a>
                   </li>
                 </ul>
               </li>
