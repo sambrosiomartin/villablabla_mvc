@@ -9,7 +9,8 @@ if (isset($_SESSION)) {
                 $_GET['ruta'] == "logout" ||
                 $_GET['ruta'] == "viajes" ||
                 $_GET['ruta'] == "origenes" ||
-                $_GET['ruta'] == "destinos"
+                $_GET['ruta'] == "destinos" ||
+                $_GET['ruta'] == "opciones"
             ) {
 //SOLO ES NECESARIO QUE HAYA LOGOUT PORQUE EL LOGIN Y/O REGISTER ESTARÍAN EN LA PAGINA PRINCIPAL                    
                     if (isset($_SESSION['username'])) {
