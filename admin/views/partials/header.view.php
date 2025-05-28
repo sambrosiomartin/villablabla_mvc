@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bootstrap demo</title>
-    <!--MODAL-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <!--JS DATATABLES-->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
-    <!--CSS DATATABLES-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+  <!--MODAL-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--JS DATATABLES-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+  <!--CSS DATATABLES-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
   <!--cdn y css bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
@@ -88,52 +88,6 @@
             <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
               <span class="fs-5 d-none d-sm-inline">Bienvenido <?= $_SESSION['username'] ?></span>
             </a>
-            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-
-              <li>
-                <a href="inicio"  class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Viajes</span></a>
-              </li>
-              <li>
-                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                  <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Lugares</span></a>
-                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                  <li class="w-100">
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Orígenes</span></a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Destinos</span></a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Opciones de viaje</span> </a>
-                <!--ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                  <li class="w-100">
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                  </li>
-                </ul-->
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Estadísticas</span> </a>
-              </li>
-            </ul>
-            <hr>
             <div class="dropdown pb-4">
               <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="views/img/banner/1.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
@@ -146,7 +100,7 @@
                 <li-->
                 <li class="nav-item text-center">
                   <a href="../inicio" class="nav-link align-middle px-0" target="_blank">
-                    <span>Frontend</span> 
+                    <span>Frontend</span>
                   </a>
                 </li>
                 <hr class="dropdown-divider">
@@ -154,7 +108,40 @@
                 <li class="text-center"><a class="dropdown-item" href="../logout">Cerrar Sesión</a></li>
               </ul>
             </div>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+
+              <li>
+                <a href="inicio" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
+              </li>
+              <li>
+                <a href="viajes" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-bag"></i> <span class="ms-1 d-none d-sm-inline">Viajes</span></a>
+              </li>
+              <li>
+                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                  <i class="fs-4 bi-geo-alt"></i> <span class="ms-1 d-none d-sm-inline">Lugares</span></a>
+                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                  <li class="w-100">
+                    <a href="origenes" class="nav-link px-0 align-middle">
+                      <i class="fs-4 bi-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Orígenes</span> </a>
+                  </li>
+                  <li>
+                    <a href="destinos" class="nav-link px-0 align-middle">
+                      <i class="fs-4 bi-arrow-left"></i> <span class="ms-1 d-none d-sm-inline">Destinos</span> </a>
+                  </li>
+                </ul>
+              </li>
+               <li>
+                <a href="opciones" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-circle"></i> <span class="ms-1 d-none d-sm-inline">Opciones</span> </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-bar-chart"></i> <span class="ms-1 d-none d-sm-inline">Estadísticas</span> </a>
+              </li>
+            </ul>
+            <hr>
+
           </div>
         </div>
-       
-

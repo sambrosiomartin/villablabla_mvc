@@ -169,8 +169,18 @@
                             <a class="nav-link page-scroll" href="logout">Cerrar sesión</a>
                         </li>
                         <span class="nav-item">
-                            <a class="btn-outline-sm page-scroll" href="paginaUsuario"><?= $_SESSION['username'] ?></a>
-                        </span>
+                            <?php if($_SESSION['tipoUsuario']=="administrador"){ ?>
+                                    <a class="btn-outline-sm page-scroll" href="admin/inicio">Bienvenid@ Administrador@</a>
+                            <?php 
+                                }
+                                else
+                                {
+                            ?>  
+                                    <a class="btn-outline-sm page-scroll" href="paginaUsuario">Bienvenid@ <?= $_SESSION['username'] ?></a>
+                            <?php 
+                                }
+                            ?>
+                         </span>
                     <?php
                     }
                     ?>

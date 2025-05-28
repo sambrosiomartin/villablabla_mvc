@@ -14,36 +14,42 @@
             return $pagina_actual;
         }
 /////////VALIDACION
-        static public function validate($expresion,$value){
-            /*  expresiones mas regulares
-                nombre: '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/'
-                apellidos: '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/'
-                username: '/^[a-zA-Z0-9ñÑ-]+$/'
-                password: '/^[a-zA-Z0-9!@#$&%*()\\-.+,]+$/'
-                telefono: '/^[0-9+]+$/'
-            */
-          
-            if(preg_match($expresion, $value)){
+    static public function validate($value, $value_type)
+    {
+        $expresion = array(
+            'nombre' => '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/',
+            'apellido' => '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ -]+$/',
+            'username' => '/^[a-zA-Z0-9ñÑ-]+$/',
+            'password' => '/^[a-zA-Z0-9!@#$&%*()\\-.+,]+$/',
+            'telefono' => '/^[0-9+]+$/',
+            'texto' => '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ !@#$&%*()\\-.+,_]+$/',
+            'entero' => '/^[0-9]+$/'
+        );
+        if (preg_match($expresion[$value_type], $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    static public function validate_email($value)
+    {
+        if ($value != "") {
+            $value_sin_espacios = trim($value);
+            $value = filter_var($value_sin_espacios, FILTER_SANITIZE_EMAIL);
+            if (!filter_var($value_sin_espacios, FILTER_VALIDATE_EMAIL)) {
+                return false;
+            } else {
                 return true;
             }
-            else{
-                return false;
-            }
+        } else {
+            return true;
         }
-        static public function validate_email($value){
-            $value_sin_espacios=trim($value);
-            $value=filter_var($value_sin_espacios,FILTER_SANITIZE_EMAIL);
-            if(!filter_var($value_sin_espacios, FILTER_VALIDATE_EMAIL)){
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
-        static public function encriptPassword($value){
-            $encriptada=crypt($value, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-            return $encriptada;
-        }
+    }
+    static public function encriptPassword($value)
+    {
+        $encriptada = crypt($value, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+        return $encriptada;
+    }
 /////////IMAGENES
         static public function rutaImagen($ruta_carpeta){
             return $ruta_carpeta;
