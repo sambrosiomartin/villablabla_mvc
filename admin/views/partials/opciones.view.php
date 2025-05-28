@@ -121,4 +121,36 @@ foreach ($listadoOpciones as $value) {
 <?php
 }
 ?>
-<!--FIN MODAL ELIMINAR USUARIO-->
+<!--FIN MODAL MODIFICAR OPCION-->
+<!--MODAL MODIFICAR OPCIÓN-->
+<?php
+foreach ($listadoOpciones as $value) {
+?>
+    <div class="modal fade" id="deleteOptionModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center" id="exampleModalLabel">Está seguro de que quiere eliminar esta opción</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                        <input type="hidden" name="id" value="<?= $value['id'] ?>">
+                        <input type="hidden" name="deleteOpcion" value="<?= $value['id'] ?>">
+                        <div class="col-md-12" style="margin-top:5%;">
+                            <button type="submit" class="btn btn-primary">Enviar datos</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
+<!--MODAL FIN ELIMINAR OPCION-->

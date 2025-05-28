@@ -23,15 +23,14 @@ class CtrOpciones
                         "tipo_opcion" => $_POST['tipo_opcion'],
                         "descripcion" => $_POST['descripcion']
                     );
-                    $crearOpcion=MdlOpciones::mdlInsertarOpcion($table,$datos);
-                    if($crearOpcion){
+                    $crearOpcion = MdlOpciones::mdlInsertarOpcion($table, $datos);
+                    if ($crearOpcion) {
                         echo "<script>
                             window.alert('La nueva opción se ha creado con éxito');
                             window.location='opciones';
                         </script>";
-                    }
-                    else{
-                         echo "<script>
+                    } else {
+                        echo "<script>
                             window.alert('Ha habido algún error, inténtelo de nuevo');
                         </script>";
                     }
@@ -51,7 +50,7 @@ class CtrOpciones
                 </script>";
         }
     }
-    
+
     //metodo controlador editar datos opción
     public function ctrUpdateOpcion()
     {
@@ -93,6 +92,21 @@ class CtrOpciones
                     window.alert('Error en alguno de los datos introducidos');
                 </script>";
             }
+        }
+    }
+    public function ctrDeleteOption($id)
+    {
+        $deleteOption = MdlOpciones::deleteRow("opciones", "id", $id);
+        if ($deleteOption) {
+            echo "<script>
+                    window.alert('La opción de viaje se ha eliminado con éxito');
+                    window.location='opciones';
+                </script>";
+        }
+        else{
+            echo "<script>
+                    window.alert('Se ha producido un error');
+                </script>";
         }
     }
 }

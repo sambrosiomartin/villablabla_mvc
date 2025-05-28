@@ -7,5 +7,8 @@
     if(isset($_POST['updateOpciones']) && !empty($_POST)){
           $updateOpcion=$datosOpciones->ctrUpdateOpcion();
     }
+    if(isset($_POST['deleteOpcion']) && !empty($_POST)){
+          $deleteOpcion=$datosOpciones->ctrDeleteOption($_POST['id']);
+    }
     include "views/partials/opciones.view.php";
 
