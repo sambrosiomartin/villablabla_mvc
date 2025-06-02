@@ -1,8 +1,8 @@
 <!-- Footer -->
-<div class="footer">
+<section class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 text-center">
                 <div class="footer-col first">
                     <p><b>ENLACES INTERESANTES</b></p>
                     <p>
@@ -17,36 +17,10 @@
 
                 </div> <!-- end of footer-col -->
 
-                <div class="footer-col fifth">
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-facebook-f fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-twitter fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-pinterest-p fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-instagram fa-stack-1x"></i>
-                        </a>
-                    </span>
-                </div> <!-- end of footer-col -->
             </div> <!-- end of col -->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
-</div> <!-- end of footer -->
+</section> <!-- end of footer -->
 <!-- end of footer -->
 
 
@@ -55,7 +29,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <p class="p-small">Copyright © 2025 <a href="https://inovatik.com">Inovatik</a> - All rights reserved
+                <p class="p-small">Copyright © 2025 <a href="#">Sergio Ambrosio Martín</a> - All rights reserved
                 </p>
             </div> <!-- end of col -->
         </div> <!-- enf of row -->
@@ -66,16 +40,58 @@
 
 <!-- Scripts -->
 <script>
-    let table = new DataTable('#myTable'/*, {
-        language: {
-            url: '//cdn.datatables.net/plug-ins/2.3.1/i18n/es-ES.json',
-        },
-    }*/);
-    let table2 = new DataTable('#myTable2'/*, {
-        language: {
-            url: '//cdn.datatables.net/plug-ins/2.3.1/i18n/es-ES.json',
-        },
-    }*/);
+    let table = new DataTable('#myTable', {
+    //array para cambiar en función de datatable el idioma de los elementos
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+    //opciones de cantidad de filas representadas en el datatable
+    "lengthMenu": [[5, 10, 20, 40, 80, -1], [5, 10, 20, 40, 80, "Todos"]], // Opciones personalizadas
+    "pageLength": 5 // Longitud de página predeterminada
+  });
+    let table2 = new DataTable('#myTable2', {
+    //array para cambiar en función de datatable el idioma de los elementos
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+    //opciones de cantidad de filas representadas en el datatable
+    "lengthMenu": [[5, 10, 20, 40, 80, -1], [5, 10, 20, 40, 80, "Todos"]], // Opciones personalizadas
+    "pageLength": 5 // Longitud de página predeterminada
+  });
 </script>
 <script src="views/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
 <script src="views/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->

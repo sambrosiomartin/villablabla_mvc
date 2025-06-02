@@ -141,6 +141,7 @@ class CtrViajes
                         if ($viaje) {
                             echo "<script>
                                 window.alert('El viaje se ha modificado con éxito');
+                                window.location='paginaUsuario';
                             </script>";
                             return true;
                         } else {

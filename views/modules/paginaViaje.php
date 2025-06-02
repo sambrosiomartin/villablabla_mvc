@@ -4,16 +4,23 @@
         $datos=new CtrTablas();
         $reserva=new CtrReservas();
         $viaje=new CtrViajes();
+        $opciones=new CtrOpciones();
         $table_viajes="viajes";
         $table_usuarios="usuarios";
         $table_auto="automoviles";
         $table_reserva="reservas";
         $table_paradas="paradas";
+        $table_opciones="opciones";
         $datos_viaje=$datos->ctrShowRegister($table_viajes, "id", $_GET['id']);
         $datos_conductor=$datos->ctrShowRegister($table_usuarios,"id",$datos_viaje[0]['id_usuario']);
         $datos_auto=$datos->ctrShowRegister($table_auto,"id",$datos_viaje[0]['id_coche']);
-        $id_viajero=$datos->ctrshowValueField($table_usuarios,"id","username",$_SESSION['username']);
+        if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+            $id_viajero=$datos->ctrshowValueField($table_usuarios,"id","username",$_SESSION['username']);
+        }
         $reservas_viaje=$datos->ctrShowRegister($table_reserva,'id_viaje',$datos_viaje[0]['id']);
+        //para listado de opciones del viaje
+        $opcionesViaje=$opciones->ctrMostrarOpcionesViaje($datos_viaje[0]['id']);
+        $listadoOpciones=$opciones->ctrOpcionesRestantes($opcionesViaje);
         //coches del conductor
         $coches_conductor=$datos->ctrShowRegister($table_auto,"id_usuario",$datos_viaje[0]['id_usuario']);
         //var_dump($coches_conductor);
@@ -47,5 +54,9 @@ if(isset($_POST['eliminarParada']) && !empty($_POST)){
 //eliminar viaje
 if(isset($_POST['eliminarViaje']) && !empty($_POST)){
     $eliminarViaje=$viaje->ctrDeleteViaje();
+}
+//insertar opciones de viaje
+if(isset($_POST['insertarOpciones']) && !empty($_POST)){
+    $insertarOpciones=$opciones->ctrInsertarOpcionViaje($_POST['idViaje']);
 }
     include "views/partials/paginaViaje.view.php";

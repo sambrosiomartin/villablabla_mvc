@@ -1,68 +1,65 @@
-<section style="background-color: #eee; margin-top:5%;">
-    <div class="container py-5">
+<section style="background-color: #eee;">
+    <div class="container py-5 ">
         <!--titulo-->
         <div style="text-align: center;">
             <h2> <b><?= $datos_viaje[0]['origen'] ?> - <b><?= $datos_viaje[0]['destino'] ?></b></h2>
         </div>
         <!--inicio datos viaje-->
         <div class="row">
-            <div class="container rounded bg-white mb-5">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php
-                        foreach ($datos_viaje as $values) {
-                        ?>
-                            <h3>Origen: <?= $values['origen'] . " - Sale a las " . $values['hora_salida'] . " desde " . $values['direccion_origen'] ?></h3>
-                            <ul>
-                                <?php
-                                foreach ($paradas as $values_parada) {
-                                ?>
-                                    <li><?= $values_parada['poblacion'] ?></li>
-                                <?php
-                                }
-                                ?>
-                            </ul>
-                            <h3>Destino: <?= $values['destino'] . " - llega a las (hora salida) + " . $values['tiempo_estimado'] . " a " . $values['direccion_destino'] ?></h3>
-                            <hr>
-                            <h4>Quedan <?= $num_asientos_vacios ?> plazas</h4>
-                        <?php
-                        }
-                        ?>
-                    </div>
+            <div class="container col-lg-5 rounded-50 bg-white mb-5 ">
+
+                <div class="col-md-12">
+                    <?php
+                    foreach ($datos_viaje as $values) {
+                    ?>
+                        <h4>Origen: <?= $values['origen'] . " - Sale a las " . $values['hora_salida'] . " desde " . $values['direccion_origen'] ?></h4>
+                        <ul>
+                            <?php
+                            foreach ($paradas as $values_parada) {
+                            ?>
+                                <li><?= $values_parada['poblacion'] ?></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                        <h4>Destino: <?= $values['destino'] . " - llega a las (hora salida) + " . $values['tiempo_estimado'] . " a " . $values['direccion_destino'] ?></h4>
+                        <hr>
+                        <h4>Quedan <?= $num_asientos_vacios ?> plazas</h4>
+                    <?php
+                    }
+                    ?>
                 </div>
+
             </div>
 
             <!--fin de datos viaje-->
             <!--datos del conductor--->
 
-            <div class="container rounded bg-white mb-5">
+            <div class="container col-lg-5 rounded-50 bg-white mb-5">
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h3>Datos del conductor</h3>
                     </div>
-                    <div class="col-md-3 border-right">
+                    <div class="col-md-4 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <?php
                             foreach ($datos_conductor as $values) {
                             ?>
                                 <img src="<?= Utilidades::imagenUsuario($values['username'], $values['foto']) ?>" alt="avatar"
-                                    class="rounded-circle img-fluid" style="width: 150px;">
-                                <h5 class="my-3"><?= $values['nombre'] . " " . $values['apellido1'] ?></h5>
+                                    class="rounded-circle img-fluid" style="width: 150px;border: 2px solid purple;">
+
                             <?php
                             }
                             ?>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <div class="p-3 py-5">
                             <div class="row mt-2">
                                 <?php
                                 foreach ($datos_conductor as $values) {
                                 ?>
-                                    <div class="col-sm-3">
-                                        <p class="mb-0"><b>Nombre completo</b></p>
-                                    </div>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-12">
                                         <p class="text-muted mb-0"><?= $values['nombre'] . " " . $values['apellido1'] ?></p>
                                     </div>
                             </div>
@@ -86,7 +83,7 @@
             </div>
             <!---fin de los datos del conductor-->
             <!--detalles y descripción del viaje-->
-            <div class="container rounded bg-white mb-5">
+            <div class="container col-lg-5 rounded-50 bg-white mb-5 container-pill">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h3>Detalles del viaje</h3>
@@ -94,14 +91,27 @@
                     <ul>
                         <!--AQUI VA UN FOREACH CON LAS OPCIONES DE VIAJE QUE HAYA ELEGIDO EL CONDUCTOR PARA SU VIAJE-->
                         <li>
-                            Descripción: <?= $datos_viaje[0]['descripcion'] ?>
+                            Descripción del viaje: <?= $datos_viaje[0]['descripcion'] ?>
                         </li>
+                        <?php
+                        //var_dump($opcionesViaje);
+                        foreach ($opcionesViaje as $value) {
+                        ?>
+
+                            <li>
+                                <?= $value[0]['tipo_opcion'] ?>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
+                <div class="buttonCreateOption text-center" style="margin-bottom: 2rem;">
+                    <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#createOptionModal" data-whatever="@mdo">Más opciones</button>
+                </div>
+
             </div>
             <!--fin de detalles y descripcion del viaje-->
             <!--datos del auto-->
-            <div class="container rounded bg-white mb-5">
+            <div class="container col-lg-5 rounded-50 bg-white mb-5">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h3>Detalles del automovil</h3>
@@ -118,65 +128,82 @@
                     </ul>
                 </div>
             </div>
-            <!--fin de datos del auto-->
-            <!--LA CAJA DE RESERVA SOLO LA VERÁN AQUELLXS QUE NO SEAN EL CONDUCTOR-->
-            <!--caja de reserva-->
-            <div class="container rounded bg-white mb-5">
-                <div class="row">
-                    <div class="col-lg-12 text-center button-padding">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalReserva" data-whatever="@mdo">Reservar plaza</button>
-                    </div>
-                </div>
-            </div>
-            <!--fin de caja de reserva-->
-            <!--AQUI ESTARÁN LAS OPCIONES PARA EL CONDUCTOR, SOLO PODRÁ VERLAS EL CONDUCTOR-->
-            <!--el conductor puede ver las reservas y su estado-->
-            <div class="container rounded bg-white mb-5">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <table style="width:100%;">
-                            <thead>
-                                <tr>
-                                    <td>Id</td>
-                                    <td>Viajero</td>
-                                    <td>Número de asientos reservados</td>
-                                    <td>Estado de la reserva</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($reservas_viaje as $values) {
-                                    $viajero = $datos->ctrShowRegister("usuarios", 'id', $values['id_usuario']);
-                                ?>
+            <?php
+            if (isset($_SESSION['username'])) {
+            ?>
+                <!--tabla de reservas-->
+                <div class="container rounded-50 bg-white mb-5">
+                    <div class="row">
+
+                        <div class="col-lg-12 text-center button-padding">
+                            <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#ModalReserva" data-whatever="@mdo">Reservar plaza</button>
+                        </div>
+
+                        <div class="col-lg-12 text-center">
+                            <table style="width:100%;">
+                                <thead>
                                     <tr>
-                                        <td><?= $values['id'] ?></td>
-                                        <td><?= $viajero[0]['nombre'] . " " . $viajero[0]['apellido1'] ?></td>
-                                        <td><?= $values['num_plazas_reservadas'] ?></td>
-                                        <td>
-                                            <!--si tengo tiempo, convertir esto en un partial aparte y usar jquery-->
-                                            <!--cambiar colores de estado de reserva según esté en espera, negada o afirmada--->
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalCambiarEstadoReserva<?= $values['id'] ?>" data-whatever="@mdo">Reserva <?= $values['estado'] ?></button>
-                                        </td>
+                                        <td>Id</td>
+                                        <td>Viajero</td>
+                                        <td>Número de asientos reservados</td>
+                                        <td>Estado de la reserva</td>
                                     </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($reservas_viaje as $values) {
+                                        $viajero = $datos->ctrShowRegister("usuarios", 'id', $values['id_usuario']);
+                                    ?>
+                                        <tr>
+                                            <td><?= $values['id'] ?></td>
+                                            <td><?= $viajero[0]['nombre'] . " " . $viajero[0]['apellido1'] ?></td>
+                                            <td><?= $values['num_plazas_reservadas'] ?></td>
+                                            <?php
+                                            if ($_SESSION['username'] == $datos_conductor[0]['username']) {
+                                            ?>
+                                                <td>
+                                                    <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#ModalCambiarEstadoReserva<?= $values['id'] ?>" data-whatever="@mdo">Reserva <?= $values['estado'] ?></button>
+                                                </td>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <td>
+                                                    <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#">Reserva <?= $values['estado'] ?></button>
+                                                </td>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--fin de sección-->
-            <div class="container rounded bg-white mb-5">
-                <div class="row">
-                    <div class="col-lg-12 text-center button-padding">
-                        <h3>Opciones</h3>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEditarViaje" data-whatever="@mdo">Editar datos viaje</button>
-                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#ModalTableParadas" data-whatever="@mdo">Añadir/eliminar paradas</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminarviaje" data-whatever="@mdo">Eliminar viaje</button>
+            <?php
+            }
+            ?>
+            <!--fin de tabla de reservas-->
+            <!--botones de gestión del viaje para uso de conductor-->
+            <?php
+            if (isset($_SESSION['username']) && $_SESSION['username'] == $datos_conductor[0]['username']) {
+            ?>
+                <div class="container rounded-50 bg-white mb-5">
+                    <div class="row">
+                        <div class="col-lg-12 text-center button-padding">
+                            <h3>Opciones</h3>
+                            <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#ModalEditarViaje" data-whatever="@mdo">Editar datos viaje</button>
+                            <button type="button" class="btn btn-outline-primary rounded-pill" data-toggle="modal" data-target="#ModalTableParadas" data-whatever="@mdo">paradas viaje</button>
+                            <button type="button" class="btn btn-danger rounded-pill" data-toggle="modal" data-target="#ModalEliminarviaje" data-whatever="@mdo">Eliminar viaje</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php
+            }
+            ?>
+            <!--fin de botones de gestión del viaja - uso de conductor-->
         </div>
     </div>
 </section>
@@ -492,3 +519,45 @@ foreach ($paradas as $values_parada) {
         </div>
     </div>
 </div>
+<!--MODAL GESTIÓN OPCIONES DE VIAJE-->
+<div class="modal fade" id="createOptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100rem;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title" id="exampleModalLabel"></h4>
+                <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Cerrar</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                        <input type="hidden" name="idViaje" value="<?= $datos_viaje[0]['id'] ?>">
+                        <input type="hidden" name="insertarOpciones" />
+                        <?php
+                        foreach ($listadoOpciones as $value) {
+                        ?>
+                            <div class="form-check rounded-pill bg-white col-lg-6" style="border:2px solid black; padding:10px 0 10px 50px;margin-bottom:5px;font-size: 1rem;">
+                                <input class="form-check-input" type="checkbox" name="opciones[]" value="<?= $value['id'] ?>" id="opcion<?= $value['id'] ?>">
+                                <label class="form-check-label" for="opcion<?= $value['id'] ?>">
+                                    <?= $value['tipo_opcion'] ?>
+                                </label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                </div>
+                <div class="col-md-12 text-center" style="padding:2em;">
+                    <button type="submit" class="btn btn-success rounded-pill">Enviar datos</button>
+                </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!--FIN DE MODAL DE GESTIÓN DE OPCIONES DE VIAJE-->

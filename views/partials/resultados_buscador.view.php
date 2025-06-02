@@ -16,8 +16,8 @@
                         </th>
                     </tr>
                     <tr>
+                        <th class="foto">foto</th>
                         <th>usuario</th>
-                        <th>foto</th>
                         <th>dia</th>
                         <th>hora</th>
                         <th>Regularidad</th>
@@ -29,12 +29,12 @@
                         if(Utilidades::minimumDate($value['fecha'])){
                         $datos_conductor=$conductor->ctrShowRegister("usuarios","id",$value['id_usuario']);
                     ?>
-                        <tr>
-                            <td>
-                                <?= $datos_conductor[0]['nombre'] . " " . $datos_conductor[0]['apellido1'] ?>
+                        <tr> 
+                            <td >
+                                <img src="<?= Utilidades::imagenUsuario($datos_conductor[0]['username'], $datos_conductor[0]['foto']) ?>" class="rounded-circle img-fluid" alt="imagen de usuario"/>
                             </td>
                             <td>
-                                <img src="<?= Utilidades::imagenUsuario($datos_conductor[0]['username'], $datos_conductor[0]['foto']) ?>" class="rounded-circle img-fluid" alt="imagen de usuario" width="10%"/>
+                                <?= $datos_conductor[0]['nombre'] . " " . $datos_conductor[0]['apellido1'] ?>
                             </td>
                             <td>
                                 <?= Utilidades::english_date_to_spanish($value['fecha']) ?>
@@ -46,7 +46,7 @@
                                 <?= $value['regularidad'] ?>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>" role="button" target="_blank" rel="noopener">ir a viaje...</a>
+                                <a class="btn btn-primary rounded-pill" href="index.php?ruta=paginaViaje&id=<?= $value['id'] ?>" role="button" target="_blank" rel="noopener">ir a viaje...</a>
                             </td>
                         </tr>
 <!--else-->

@@ -1,23 +1,11 @@
-<section style="background-color: #eee; margin-top:5%;">
+<section style="background-color: #eee;">
     <div class="container py-5">
-        <!--crear breadcrumbs-->
-        <!--div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">User</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                    </ol>
-                </nav>
-            </div>
-        </div-->
         <div style="text-align: center;">
             <h2>Página de usuario</h2>
         </div>
-<!--DATOS DEL USUARIO-->
+        <!--DATOS DEL USUARIO-->
         <div class="row">
-            <div class="container rounded bg-white mb-5">
+            <div class="container rounded-50 bg-white mb-5">
                 <div class="row">
                     <div class="col-md-3 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -30,7 +18,7 @@
                             <?php
                             }
                             ?>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEdicionPerfil" data-whatever="@mdo">Editar datos perfil</button>
+                            <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#ModalEdicionPerfil" data-whatever="@mdo">Editar datos perfil</button>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -84,9 +72,9 @@
                 </div>
             </div>
         </div>
-<!--DATOS DEL AUTOMOVIL Y OPCIONES DE CRUD-->
+        <!--DATOS DEL AUTOMOVIL Y OPCIONES DE CRUD-->
         <div class="row mb-5">
-            <div class="container rounded bg-white">
+            <div class="container rounded-50 bg-white">
                 <div class="row">
                     <div class="col-12 text-center">
                         <?php if (!empty($automovilValues)) {  ?>
@@ -129,8 +117,8 @@
                                                 <?= $values['numero_plazas'] . " plazas" ?>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEditarAuto<?= $values['id'] ?>" data-whatever="@mdo">Editar automovil</button>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminarAuto<?= $values['id'] ?>" data-whatever="@mdo">Eliminar automovil</button>
+                                                <button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#ModalEditarAuto<?= $values['id'] ?>" data-whatever="@mdo">Editar automovil</button>
+                                                <button type="button" class="btn btn-danger rounded-pill" data-toggle="modal" data-target="#ModalEliminarAuto<?= $values['id'] ?>" data-whatever="@mdo">Eliminar automovil</button>
                                             </td>
                                         </tr>
                                     <?php
@@ -140,15 +128,15 @@
                             </table>
                         <?php } ?>
                         <div style="margin:2% 2%;">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalRegistroAuto" data-whatever="@mdo">Registrar automovil</button>
+                            <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#ModalRegistroAuto" data-whatever="@mdo">Registrar automovil</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<!--TABLA DE VIAJES ACTIVOS POR EL CONDUCTOR-->
+        <!--TABLA DE VIAJES ACTIVOS POR EL CONDUCTOR-->
         <div class="row mb-5">
-            <div class="container rounded bg-white">
+            <div class="container rounded-50 bg-white">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h4 class="text-center" style="margin:1% 1%;">Viajes activos</h4>
@@ -183,11 +171,11 @@
                                         <td><?= $plazasLibres ?></td>
                                         <td><?= $values['regularidad'] ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>" target="_blank" rel="noopener">Ir a viaje...</a></button>
+                                            <button type="button" class="btn btn-info rounded-pill"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>" target="_blank" rel="noopener" >Ir a viaje...</a></button>
                                             <?php
                                             if ($reservasEspera == true) {
                                             ?>
-                                                <button type="button" class="btn btn-outline-secondary"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>#reservas" target="_blank" rel="noopener">Reservas en espera</a></button>
+                                                <button type="button" class="btn btn-secondary rounded-pill"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>#reservas" target="_blank" rel="noopener">Reservas en espera</a></button>
                                             <?php
                                             }
                                             ?>
@@ -196,21 +184,21 @@
                             <?php
                                 }
                             } else {
-                                echo "<h4>No Hay viajes activos en este momento</h4>";
+                                echo "<h5>No Hay viajes activos en este momento</h5>";
                             }
                             ?>
                         </table>
-<!--botón de creación de viaje crearviaje-->
+                        <!--botón de creación de viaje crearviaje-->
                         <div style="margin:2% 2%;">
-                            <button type="button" class="btn btn-primary"><a href="crearViaje" style="color:white; text-decoration:none;" target="_blank" rel="noopener">Crear Viaje</a></button>
+                            <button type="button" class="btn btn-primary rounded-pill"><a href="crearViaje" style="color:white; text-decoration:none;" target="_blank" rel="noopener">Crear Viaje</a></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<!--tabla de reservas activas-->
+        <!--tabla de reservas activas-->
         <div class="row mb-5">
-            <div class="container rounded bg-white">
+            <div class="container rounded-50 bg-white">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h4 class="text-center" style="margin:1% 1%;">Reservas activas</h4>
@@ -246,13 +234,13 @@
                                             <?= $value['estado'] ?>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary"><a href="index.php?ruta=paginaViaje&id=<?= $value['id_viaje'] ?>" target="_blank" rel="noopener">Ir a viaje...</a></button>
+                                            <button type="button" class="btn btn-info rounded-pill"><a href="index.php?ruta=paginaViaje&id=<?= $value['id_viaje'] ?>" target="_blank" rel="noopener">Ir a viaje...</a></button>
                                         </td>
                                     </tr>
                             <?php
                                 }
                             } else {
-                                echo "<h4>No Hay reservas activas en este momento</h4>";
+                                echo "<h5>No Hay reservas activas en este momento</h5>";
                             }
                             ?>
                         </table>
@@ -260,11 +248,12 @@
                 </div>
             </div>
         </div>
+        <!--FIN DE TABLA DE VIAJES PASADOS COMO CONDUCTOR-->
         <div class="row mb-5">
-            <div class="container rounded bg-white">
+            <div class="container rounded-50 bg-white">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h4 class="text-center" style="margin:1% 1%;">Viajes pasados</h4>
+                        <h4 class="text-center" style="margin:1% 1%;">Historial de viajes como conductor</h4>
                         <table id="myTable" class="display" style="width:100%">
                             <thead>
                                 <tr>
@@ -302,7 +291,7 @@
                                 <?php
                                     }
                                 } else {
-                                    echo "<h4>No encontrados registros antiguos</h4>";
+                                    echo "<h5>No encontrados registros antiguos</h5>";
                                 }
                                 ?>
                                 <!--AQUI TERMINA EL FOREACH-->
@@ -313,12 +302,13 @@
                 </div>
             </div>
         </div>
+        <!--FIN DE TABLA DE VIAJES PASADOS COMO CONDUCTOR-->
         <!--TABLA DE RESERVAS PASADAS-->
         <div class="row mb-5">
-            <div class="container rounded bg-white">
+            <div class="container rounded-50 bg-white">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h4 class="text-center" style="margin:1% 1%;">Reservas pasadas</h4>
+                        <h4 class="text-center" style="margin:1% 1%;">Historial de reservas</h4>
                         <table id="myTable2" class="display" style="width:100%">
                             <thead>
                                 <tr>
@@ -340,7 +330,7 @@
                                         $viaje = tablas::showRegister("viajes", "id", $value['id_viaje']);
                                 ?>
                                         <tr>
-                                            <td><?=$value['id']?></td>
+                                            <td><?= $value['id'] ?></td>
                                             <td><?= $viaje[0]['origen'] ?></td>
                                             <td><?= $viaje[0]['destino'] ?></td>
                                             <td>
@@ -353,13 +343,13 @@
                                                 <?= $value['num_plazas_reservadas'] ?>
                                             </td>
                                             <td>
-                                                <?= $value['estado']?>
+                                                <?= $value['estado'] ?>
                                             </td>
                                         </tr>
                                 <?php
                                     }
                                 } else {
-                                    echo "<h4>No Hay reservas activas en este momento</h4>";
+                                    echo "<h5>No Hay reservas pasadas</h5>";
                                 }
                                 ?>
                                 <!--AQUI TERMINA EL FOREACH-->

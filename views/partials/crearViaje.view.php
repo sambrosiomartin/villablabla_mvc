@@ -13,8 +13,9 @@
                     <label for="inputHoraSalida" class="form-label">Hora de salida</label>
                     <input type="time" name="hora_salida" class="form-control" id="inputHoraSalida" required />
                 </div>
-                <div class="col-md-6">
-                    <label class="textOrigen" for="forOrigen">Seleccione desde donde sale</label>
+                <!--aqui empiezan inputs origen y destino-->
+                <div class="form-group col-lg-6 text-center">
+                    <label class="textOrigen subrayado-1" for="forOrigen">Seleccione desde donde sale</label>
                     <select name="origen" class="form-control-select" id="forOrigen" required>
                         <option class="select-option" value="" disabled selected>Seleccione una opción de origen
                         </option>
@@ -26,9 +27,16 @@
                         }
                         ?>
                     </select>
+                    <!--input oculto de otros origenes--->
+                    <div class="col-lg-12" id="BlockotrosOrigenes" style="display: none;">
+                        <label class="textOrigen subrayado-1" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
+                            orígenes</label>
+                        <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
+                            placeholder="" aria-describedby="helpId">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label class="textDestino" for="forDestino">Seleccione su destino</label>
+                <div class="form-group col-lg-6 text-center">
+                    <label class="textDestino subrayado-2" for="forDestino">Seleccione hacia donde va</label>
                     <select name="destino" class="form-control-select" id="forDestino" required>
                         <option class="select-option" value="" disabled selected>Seleccione una opción de
                             destino</option>
@@ -40,19 +48,15 @@
                         }
                         ?>
                     </select>
+                    <!--input oculto de otros origenes--->
+                    <div class="col-lg-12" id="BlockotrosDestinos" style="display: none;">
+                        <label class="textDestino subrayado-2" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
+                            destinos</label>
+                        <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
+                            placeholder="" aria-describedby="helpId">
+                    </div>
                 </div>
-                <div class="form-group col-lg-6" id="BlockotrosOrigenes" style="display: none;">
-                    <label class="textOrigen" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
-                        orígenes</label>
-                    <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
-                        placeholder="" aria-describedby="helpId">
-                </div>
-                <div class="form-group col-lg-6" id="BlockotrosDestinos" style="display: none;">
-                    <label class="textDestino" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
-                        destinos</label>
-                    <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
-                        placeholder="" aria-describedby="helpId">
-                </div>
+                <!--aqui terminan inputs origen y destino-->
                 <div class="col-md-6">
                     <label for="forDireccionOrigen" class="form-label">Dirección de origen</label>
                     <input type="text" name="direccion_origen" class="form-control" id="forDireccionOrigen" required />

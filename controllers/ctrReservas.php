@@ -89,34 +89,34 @@ class CtrReservas
                 </script>";
                 return false;
             }
-        }
-        else{
+        } else {
             echo "<script>
                     window.alert('Vuelva a intentarlo');
                 </script>";
         }
     }
-    public function ctrReservasActivas($activa){
-        $table="reservas";
-        $usuario=Tablas::showValueField("usuarios","id","username",$_SESSION['username']);
-        $reservas=Tablas::showRegister($table,"id_usuario",$usuario['id']);
-        $reservas_activas=array();
-        $reservas_pasadas=array();
-        foreach($reservas as $value){
-            $viaje=Tablas::showRegister("viajes","id",$value['id_viaje']);
-            $viaje_activo=Utilidades::minimumDate($viaje[0]['fecha']);
-            if($value['estado']!="denegada" && $viaje_activo==true){
-                $reservas_activas[]=$value;
-            }
-            else{
-                $reservas_pasadas[]=$value;
+    public function ctrReservasActivas($activa)
+    {
+        $table = "reservas";
+        $usuario = Tablas::showValueField("usuarios", "id", "username", $_SESSION['username']);
+        $reservas = Tablas::showRegister($table, "id_usuario", $usuario['id']);
+        $reservas_activas = array();
+        $reservas_pasadas = array();
+        foreach ($reservas as $value) {
+            $viaje = Tablas::showRegister("viajes", "id", $value['id_viaje']);
+            if (!empty($viaje)) {
+                $viaje_activo = Utilidades::minimumDate($viaje[0]['fecha']);
+                if ($value['estado'] != "denegada" && $viaje_activo == true) {
+                    $reservas_activas[] = $value;
+                } else {
+                    $reservas_pasadas[] = $value;
+                }
             }
         }
-        if($activa==true){
+        if ($activa == true) {
             return $reservas_activas;
-        }
-        else{
+        } else {
             return $reservas_pasadas;
         }
-    }   
+    }
 }

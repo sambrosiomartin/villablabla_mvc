@@ -1,29 +1,43 @@
 <!--FORMULARIO INSERTAR OPCIONES PARA EL VIAJE-->
-
-<div style="margin-top:10em;">
+<section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12" style="font-size:2.5rem;border:2px solid grey; padding: 25px; text-align:center;">FORMULARIO CREACIÓN VIAJE</div>
-            <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
-                <div class="col-md-6">
-                    <label class="textOrigen" for="forOrigen">Seleccione desde donde sale</label>
-                    <select name="origen" class="form-control-select" id="forOrigen" required>
-                        <option class="select-option" value="" disabled selected>Seleccione una opción de origen
-                        </option>
+            <div class="col-lg-12 rounded-pill bg-white" style="border:2px solid grey; padding: 25px; text-align:center;">
+                <h5>Aquí podrá elegir las preferencias para el viaje, si no tiene ninguna puede pulse en saltar</h5>
+                <h5>También podrá elegir preferencias en la página del viaje</h5>
+            </div>
+            <div class="col-lg-12" >
+               <div class="col-lg-12 text-center" style="padding:2em;">
+                      <button class="btn btn-primary rounded-pill"><a href="paginaUsuario">Saltar</a></button>
+               </div> 
+               <div class="col-lg-12" >
+                <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
+                    <div class="col-md-2"></div>
+                <div class="col-md-8" >
+                   
+                  
                         <?php
-                        foreach ($paradas_buscador as $key => $value) {
+                        foreach ($datosOpciones as $value) {
                         ?>
-                            <option id="selectDestino" class="select-option" value="<?= $value ?>"><?= $key ?></option>
+                            <div class="form-check rounded-pill bg-white" style="border:2px solid black; padding:10px 0 10px 50px;margin-bottom:5px;">
+                                <input class="form-check-input" type="checkbox" name="opciones[]" value="<?= $value['id'] ?>" id="opcion<?= $value['id'] ?>">
+                                <label class="form-check-label" for="opcion<?= $value['id'] ?>">
+                                    <?= $value['tipo_opcion'] ?>
+                                </label>
+                            </div>
                         <?php
                         }
                         ?>
-                    </select>
+                   
                 </div>
-                <div class="col-md-12 text-center" style="margin:5%;">
-                    <button type="submit" class="btn btn-primary">Enviar datos</button>
+                <div class="col-md-12 text-center" style="padding:2em;">
+                    <button type="submit" class="btn btn-success rounded-pill">Enviar datos</button>
                 </div>
             </form>
+
+               </div>
+            
+            </div>
         </div>
     </div>
-</div>
-</div>
+</section>

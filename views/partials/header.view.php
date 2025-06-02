@@ -43,62 +43,132 @@
 
     <!-- Favicon  -->
     <link rel="icon" href="views/images/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <style>
-        .button-padding{
-            padding: 2.5%;   
+        .button-padding {
+            padding: 2.5%;
         }
-        
-        .navegador-caracteristicas{
-            background:#E9F1FA;
+
+        .navegador-caracteristicas {
+            background: #E9F1FA;
         }
-        .carousel-pages{
+
+        .carousel-pages {
             max-width: 900px;
-            margin-top:-75%;
+            margin-top: -75%;
         }
-        .about-style{
+
+        .about-style {
             margin-bottom: 5%;
-           
+
         }
-        .btn{
+
+        .btn {
             text-decoration: none;
         }
-        span{
+
+        span {
             font-weight: 900;
         }
-        .textOrigen{
+
+        .textOrigen {
             font-weight: 900;
             background: greenyellow;
-        }   
-        .textDestino{
-            font-weight:900;
+        }
+
+        .textDestino {
+            font-weight: 900;
             background: lightblue;
         }
-        .table-1{
-            border: 1px solid black; 
-            width: 100%; 
+
+        .table-1 {
+            border: 1px solid black;
+            width: 100%;
             text-align: center;
         }
-        td{
+
+        td {
             padding: 1%;
         }
-        h2{
+
+        h2 {
             color: blueviolet;
         }
-        .subrayado-1{
+
+        h5 {
+            font-weight: 100;
+        }
+
+        .subrayado-1 {
             background: none;
             color: #007bff;
             text-decoration: underline;
         }
-         .subrayado-2{
+
+        .subrayado-2 {
             background: none;
             color: #ff556e;
             text-decoration: underline;
         }
-        .subrayado-3{
+
+        .subrayado-3 {
             color: purple;
             font-weight: 900;
             text-decoration: underline;
         }
+
+        .foto {
+            width: 10%;
+        }
+
+        #logo img {
+            width: 150px;
+            height: 100%;
+            filter: brightness(1);
+            mix-blend-mode: multiply;
+        }
+
+        button {
+            width: 11rem;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        button a:hover {
+            text-decoration: none;
+        }
+
+    
+
+      
+       .rounded-50{
+            border-radius:50px;
+       }
+       .rounded-50{
+            border-top: 2px solid purple;
+            border-bottom:2px solid purple;
+            padding-bottom: 2rem;
+            padding-top:1rem;
+            
+       }
+       *{
+            font-family:helvetica;
+       }
+      .btn-outline-sm {
+        font-family: helvetica;
+        color:black;
+      }
+      .img-rounded{
+        border-radius: 15%;
+        border:2px solid purple;
+      }
+      .rounded-circle{
+        border:2px solid purple;
+      }
+    
     </style>
 </head>
 
@@ -117,14 +187,11 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom  navegador-caracteristicas " >
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom  navegador-caracteristicas ">
         <div class="container">
-            <!-- Text Logo - Use this if you don't have a graphic logo -->
-            <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Sync</a> -->
-
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" style="text-decoration:none; color: purple;"
-                href="inicio">VILLABLABLA</a>
+            <a id="logo" class="navbar-brand logo-image" style="margin-bottom:20px;"
+                href="inicio"><img src="views/images/logos/logoMain.png"></a>
 
             <!-- Mobile Menu Toggle Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -148,7 +215,7 @@
                         <a class="nav-link page-scroll" href="inicio#viajes">Viajes de la semana</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#otros">Otros transportes</a>
+                        <a class="nav-link page-scroll" href="preguntasRespuestas">Preguntas y respuestas</a>
                     </li>
                     <?php
                     if (!isset($_SESSION['username'])) {
@@ -169,37 +236,20 @@
                             <a class="nav-link page-scroll" href="logout">Cerrar sesión</a>
                         </li>
                         <span class="nav-item">
-                            <?php if($_SESSION['tipoUsuario']=="administrador"){ ?>
-                                    <a class="btn-outline-sm page-scroll" href="admin/inicio">Bienvenid@ Administrador@</a>
-                            <?php 
-                                }
-                                else
-                                {
-                            ?>  
-                                    <a class="btn-outline-sm page-scroll" href="paginaUsuario">Bienvenid@ <?= $_SESSION['username'] ?></a>
-                            <?php 
-                                }
+                            <?php if ($_SESSION['tipoUsuario'] == "administrador") { ?>
+                                <a class="btn-outline-sm page-scroll" href="admin/inicio">Bienvenid@ Administrador@</a>
+                            <?php
+                            } else {
                             ?>
-                         </span>
+                                <a class="btn-outline-sm page-scroll" href="paginaUsuario">Bienvenid@ <?= $_SESSION['username'] ?></a>
+                            <?php
+                            }
+                            ?>
+                        </span>
                     <?php
                     }
                     ?>
-
-                    <!-- Dropdown Menu -->
-                    <!--li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">EXTRA</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="article-details.html"><span class="item-text">ARTICLE DETAILS</span></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="terms-conditions.html"><span class="item-text">TERMS CONDITIONS</span></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="privacy-policy.html"><span class="item-text">PRIVACY POLICY</span></a>
-                        </div>
-                    </li-->
-                    <!-- end of dropdown menu -->
                 </ul>
-                <!--PODRIA USAR ESTE TIPO DE BOTONES PARA EL LOGIN, REGISTRO Y USUARIO??-->
-
             </div>
         </div> <!-- end of container -->
     </nav> <!-- end of navbar -->

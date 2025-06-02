@@ -47,8 +47,8 @@
     <!--form buscador-->
     <div class="container">
         <div class="row">
-            <div class="col-lg-12" style="background:#E9F1FA;border:2px solid grey; padding: 25px; margin-top:-10%;">
-                <div class="form-container">
+            <div class="col-lg-12 rounded-50 " style="background:#E9F1FA; padding: 25px; margin-top:-10%;">
+                <div class="form-container ">
                     <form method="POST" action="">
                         <div class="row">
                             <div class="form-group col-lg-6 text-center">
@@ -67,7 +67,7 @@
                                 <!--input oculto de otros origenes--->
                                 <div class="col-lg-12" id="BlockotrosOrigenes" style="display: none;">
                                     <label class="textOrigen subrayado-1" for="forOtrosOrigenes">Escriba el origen si no se encuentra en la lista de
-                                        orígenes</label>
+                                        lugares de salida frecuentes</label>
                                     <input type="text" name="otros_origenes" id="forOtrosOrigenes" class="form-control"
                                         placeholder="" aria-describedby="helpId">
                                 </div>
@@ -88,7 +88,7 @@
                                   <!--input oculto de otros origenes--->
                                 <div class="col-lg-12" id="BlockotrosDestinos" style="display: none;">
                                     <label class="textDestino subrayado-2" for="forOtrosDestinos">Escriba el destino si no se encuentra en la lista de
-                                        destinos</label>
+                                        destinos frecuentes</label>
                                     <input type="text" name="otros_destinos" id="forOtrosDestinos" class="form-control"
                                         placeholder="" aria-describedby="helpId">
                                 </div>
@@ -96,9 +96,6 @@
 
 
                         </div>
-                        <!--IDEAS SI DA TIEMPO-->
-                        <!--quitar acentos y poner todo en minusculas donde escriba el usuario-->
-                        <!--modo predictivo en buscador-->
                         <div class="row text-center">
                             <div class="col-lg-3"></div>
                             <div class="form-group col-lg-6">
@@ -130,12 +127,12 @@
 </section>
 <!-- end of section buscador -->
 <!-- que es villablabla Start -->
-<section id="about" class="container-fluid py-5 about-style">
+<section id="about" class="container-fluid py-5 about-style bg-gray">
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-6" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="views/images/about/about1.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 img-rounded" src="views/images/about/about1.jpg" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 pt-5 pb-lg-5">
@@ -157,7 +154,7 @@
                             <img class="img-fluid" src="img/about-2.jpg" alt="">
                         </div>
                     </div>
-                    <a href="#buscador" class="btn btn-primary mt-1">Busca tu viaje ahora...</a>
+                    <a href="#buscador" class="btn btn-primary mt-1 rounded-pill">Busca tu viaje ahora...</a>
                 </div>
             </div>
         </div>
