@@ -1,23 +1,30 @@
 <!-- Footer -->
-<section class="footer">
+<section class="footer navegador-caractaristicas">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
+<!--ENLACES PARA VIAJEROS-->
+            <div class="col-lg-6 text-center border-right">
                 <div class="footer-col first">
                     <p><b>ENLACES INTERESANTES</b></p>
                     <p>
                         <a href="https://damas-sa.es/">DAMAS</a>
                     </p>
                     <p>
-                        <a href="https://www.blablacar.es/">BLABLACAR</a>
-                    </p>
-                    <p>
                         <a href="https://www.renfe.com/es/es">RENFE</a>
                     </p>
-
-                </div> <!-- end of footer-col -->
-
-            </div> <!-- end of col -->
+                </div> 
+            </div> 
+            <div class="col-lg-6 text-center">
+                <div class="footer-col first"> 
+                    <p><b>
+                        <a href="preguntasRespuestas">Preguntas Frecuentes</a>
+                    </p></b>
+                    <p><b>
+                        <a href="#">Política de Privacidad</a>
+                    </p></b>
+                </div> 
+            </div> 
+<!--FIN DE ENALCES PARA VIAJEROS-->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
 </section> <!-- end of footer -->
@@ -45,12 +52,12 @@
     language: {
         "decimal": "",
         "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Viajes",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Viajes",
+        "infoFiltered": "(Filtrado de _MAX_ total Viajes)",
         "infoPostFix": "",
         "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "lengthMenu": "Mostrar _MENU_ Viajes",
         "loadingRecords": "Cargando...",
         "processing": "Procesando...",
         "search": "Buscar:",

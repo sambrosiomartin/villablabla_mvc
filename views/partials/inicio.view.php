@@ -1,4 +1,5 @@
 <!-- Carousel Start -->
+ <section>
 <div class="container-fluid p-0 carousel-margin">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -6,9 +7,8 @@
                 <img class="w-100" src="views/images/iniciocarousel/carousel1.jpg" alt="Image">
                 <div class="d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3 text-center carousel-pages">
-                        <h4 class="text-white text-uppercase mb-md-3">Frente al aislamiento</h4>
+                        <h4 class="text-blue text-uppercase mb-md-3">Frente al aislamiento</h4>
                         <h1 class="display-3 text-white mb-md-4">Comparte Tu Viaje</h1>
-                        <!--a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a-->
                     </div>
                 </div>
             </div>
@@ -19,9 +19,8 @@
                     <img class="w-100" src="views/images/iniciocarousel/carousel<?= $i ?>.jpg" alt="Image">
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3 text-center carousel-pages">
-                            <h4 class="text-blue text-uppercase mb-md-3">Frente al aislamiento</h4>
+                            <h4 class="text-red text-uppercase mb-md-3">Frente al aislamiento</h4>
                             <h1 class="display-3 text-blue mb-md-4">Comparte Tu Viaje</h1>
-                            <!--a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a-->
                         </div>
                     </div>
                 </div>
@@ -41,10 +40,11 @@
         </a>
     </div>
 </div>
+</section>
 <!-- Carousel End -->
 <!-- section buscador -->
-<section id="buscador" class="basic-1">
-    <!--form buscador-->
+<section id="buscador" class="basic-1 bg-section">
+    <!--formulario buscador-->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 rounded-50 " style="background:#E9F1FA; padding: 25px; margin-top:-10%;">
@@ -93,13 +93,11 @@
                                         placeholder="" aria-describedby="helpId">
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="row text-center">
                             <div class="col-lg-3"></div>
                             <div class="form-group col-lg-6">
-                                <label class="subrayado-3" for="forFecha">Aquí elija el día y mes de su viaje</label>
+                                <label class="subrayado-3" for="forFecha">Elija aquí el día y mes de su viaje</label>
                                 <input type="date" name="fecha" id="forFecha" class="form-control" placeholder=""
                                     aria-describedby="helpId" />
                             </div>
@@ -113,12 +111,11 @@
                             <div id="pmsgSubmit" class="h3 text-center hidden"></div>
                         </div>
                     </form>
-                </div> <!-- end of form container -->
+                </div> <!-- end of formulario container -->
             </div>
         </div>
 
     </div>
-    <!--end of form buscador-->
     <?php
     if (isset($viajes_buscados)) {
         include "views/partials/resultados_buscador.view.php";
@@ -128,16 +125,16 @@
 <!-- end of section buscador -->
 <!-- que es villablabla Start -->
 <section id="about" class="container-fluid py-5 about-style bg-gray">
-    <div class="container pt-5">
+    <div class="container pt-5 rounded-50-white" >
         <div class="row">
-            <div class="col-lg-6" style="min-height: 500px;">
-                <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 img-rounded" src="views/images/about/about1.jpg" style="object-fit: cover;">
+            <div class="col-lg-6">
+                <div class="position-relative h-75">
+                    <img class="position-absolute w-100 h-100 img-rounded" src="views/images/about/about1.jpg" style="object-fit: cover; height:50px;">
                 </div>
             </div>
             <div class="col-lg-6 pt-5 pb-lg-5">
-                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">¿Que es Villablabla?</h6>
+                <div class="about-text p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-purple text-uppercase " style="letter-spacing: 5px; margin-top:-35%;">¿Que es Villablabla?</h6>
                     <h3 class="mb-3">Una aplicación para que puedas moverte libremente por tu zona</h3>
                     <p>En las últimas decadas, las distancias se han acortado gracias a la evolución de los medios de transporte.
                         Sin embargo, cuando vives en una zona rural aislada o que carece de medios de transporte eficaces, las distancias

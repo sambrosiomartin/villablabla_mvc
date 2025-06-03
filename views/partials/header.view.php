@@ -44,6 +44,11 @@
     <!-- Favicon  -->
     <link rel="icon" href="views/images/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+    <!--fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
         .button-padding {
             padding: 2.5%;
@@ -92,7 +97,7 @@
         }
 
         h2 {
-            color: blueviolet;
+            color: purple;
         }
 
         h5 {
@@ -141,34 +146,63 @@
             text-decoration: none;
         }
 
-    
-
-      
-       .rounded-50{
-            border-radius:50px;
-       }
-       .rounded-50{
+        .rounded-50 {
+            border-radius: 50px;
             border-top: 2px solid purple;
-            border-bottom:2px solid purple;
+            border-bottom: 2px solid purple;
             padding-bottom: 2rem;
-            padding-top:1rem;
-            
-       }
-       *{
-            font-family:helvetica;
-       }
-      .btn-outline-sm {
-        font-family: helvetica;
-        color:black;
-      }
-      .img-rounded{
-        border-radius: 15%;
-        border:2px solid purple;
-      }
-      .rounded-circle{
-        border:2px solid purple;
-      }
-    
+            padding-top: 1rem;
+
+        }
+
+        .rounded-50-white {
+            border-radius: 50px;
+            padding-bottom:-50rem;
+            background: radial-gradient(circle, white, transparent);
+        }
+
+        * {
+            font-family: roboto;
+        }
+
+        .btn-outline-sm {
+            font-family: roboto;
+        }
+
+        .carousel-inner h4 {
+            font-family: roboto;
+            background: radial-gradient(circle, purple, transparent);
+            color: white;
+            width: 50rem;
+        }
+
+        .carousel-item h1 {
+            font-family: roboto;
+            background: radial-gradient(circle, purple, transparent);
+            color: white;
+            width: 100%;
+        }
+
+        .img-rounded {
+            border-radius: 15%;
+            border: 2px solid purple;
+        }
+
+        .rounded-circle {
+            border: 2px solid purple;
+        }
+
+        .text-purple {
+            color: purple;
+        }
+
+        section {
+            background: #eee;
+        }
+
+        .bg-section {
+            background: #eee;
+        }
     </style>
 </head>
 
@@ -214,9 +248,7 @@
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="inicio#viajes">Viajes de la semana</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="preguntasRespuestas">Preguntas y respuestas</a>
-                    </li>
+                  
                     <?php
                     if (!isset($_SESSION['username'])) {
                         //SI NO EXISTE LA SESION SE VERAN EL BOTON DE REGISTRO Y LOGIN

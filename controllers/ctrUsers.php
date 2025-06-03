@@ -82,9 +82,16 @@ class CtrUsers
                 $value = $username;
                 $read = MdlUsers::showRegister($table, $field, $value);
                 if (!empty($read)) {
-                    $ruta = 'views/images/users/';
-                    $cambiar_foto = Utilidades::editarFotos($table, $value, $ruta, $_FILES['foto']);
-                    $imagen = Utilidades::saveImageDisc($_FILES['foto'], $ruta, $username);
+                    if(!empty($_FILES['foto']['name'])) {
+                        // Si se ha subido una nueva foto, se procede a cambiarla
+                        $foto = $_FILES['foto']['name'];
+                        $ruta = 'views/images/users/';
+                        $cambiar_foto = Utilidades::editarFotos($table, $value, $ruta, $_FILES['foto']);
+                        $imagen = Utilidades::saveImageDisc($_FILES['foto'], $ruta, $username);
+                    } else {
+                        // Si no se ha subido una nueva foto, se mantiene la actual
+                        $_FILES['foto']['name'] = $read[0]['foto'];
+                    }
                     $datos = array(
                         "nombre" => $_POST['nombre'],
                         "apellido1" => $_POST['apellido1'],

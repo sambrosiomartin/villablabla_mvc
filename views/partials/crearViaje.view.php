@@ -1,9 +1,9 @@
 <!--FORMULARIO CREAR VIAJE-->
 
-<div style="margin-top:10em;">
+<div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12" style="font-size:2.5rem;border:2px solid grey; padding: 25px; text-align:center;">FORMULARIO CREACIÓN VIAJE</div>
+            <div class="col-lg-12 rounded-50" style="font-size:2.5rem;border:2px solid grey; padding: 25px; text-align:center;">FORMULARIO CREACIÓN VIAJE</div>
             <form enctype="multipart/form-data" action="" method="POST" class="row g-3">
                 <div class="col-md-6">
                     <label for="inputFecha" class="form-label">Fecha</label>

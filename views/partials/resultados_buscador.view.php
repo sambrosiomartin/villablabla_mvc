@@ -24,7 +24,7 @@
                         <th>Opciones</th>
                     </tr>
                     <?php
-/*foreach*/ 
+/*inicio de foreach*/ 
                     foreach ($viajes_buscados as $value) {
                         if(Utilidades::minimumDate($value['fecha'])){
                         $datos_conductor=$conductor->ctrShowRegister("usuarios","id",$value['id_usuario']);

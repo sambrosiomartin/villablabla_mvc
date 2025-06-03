@@ -13,7 +13,9 @@ class CtrBuscador
                 if ($validar_fecha) {
                     $origen_final = "%" . $origen . "%";
                     $destino_final = "%" . $destino . "%";
-                    $values = mdlBuscador::mdlBuscar($origen_final, $destino_final, $fecha);
+                    $values_general = mdlBuscador::mdlBuscar($origen_final, $destino_final, $fecha);
+                    $viajes=new ctrViajes();
+                    $values=$viajes->ctrViajesConAsientos($values_general);
                     echo "<script>
                             window.location='inicio#buscador';
                         </script>";

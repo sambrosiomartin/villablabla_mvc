@@ -271,4 +271,16 @@ class CtrViajes
                 </script>";
         }
     }
+    //método controlador para sumar tiempos de viaje y paradas
+    public function ctrSumarTiemposViaje($idViaje){
+        $tiempoViaje=MdlViajes::showValueField("viajes","tiempo_estimado", "id", $idViaje);
+        $tiempoViajeTotal=$tiempoViaje['tiempo_estimado'];
+        $paradas=MdlViajes::showRegister("paradas", "id_viaje", $idViaje);
+        if(!empty($paradas)){
+            foreach($paradas as $value){
+                $tiempoViajeTotal+=$value['add_time'];
+            }
+        }
+        return $tiempoViajeTotal;
+    }
 }

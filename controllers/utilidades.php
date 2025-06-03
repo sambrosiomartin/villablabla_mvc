@@ -192,6 +192,7 @@ class Utilidades
             return true;
         }
     }
+    
     //PARA VER SI SE CAMBIAN LOS DATOS PRINCIPALES DE UN VIAJE
     //si se modifica un viaje pero no se modifican fecha, hora del viaje, destino y origen, si pusiera una funcion
     //en el metodo de modificar, para ver si coincide con otro viaje ya existente siempre dará positivo
@@ -222,5 +223,11 @@ class Utilidades
                 return false;
             }
         }
+    }
+    static public function sumarMinutos($hora, $minutos){
+        $hora = date_create_from_format('H:i', $hora);
+        $hora_total=date_modify($hora,"+$minutos minutes");
+        $hora_modificada = date_format($hora_total, 'H:i');
+        return $hora_modificada;
     }
 }

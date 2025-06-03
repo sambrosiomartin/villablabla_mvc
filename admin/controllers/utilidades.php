@@ -103,7 +103,7 @@
                 $file = Tablas::showValueField($table, 'imagen','id', $id);
                 $path = Utilidades::rutaImagen($ruta);
                 $path_file = $path."/" . $id . "/" . $file['imagen'];
-                var_dump($path_file);
+                //var_dump($path_file);
                 if (file_exists($path_file)) {
                     unlink($path_file);
                     rmdir($path . $id);

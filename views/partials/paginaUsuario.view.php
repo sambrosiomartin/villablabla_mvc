@@ -72,6 +72,23 @@
                 </div>
             </div>
         </div>
+        <!--FIN DE DATOS DEL USUARIO-->
+        <!--ENLACES A MENSAJES NO LEIDO Y A HISTORIAL DE MENSAJES-->
+        <div class="row mb-5">
+            <div class="container rounded-50 bg-white">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div>
+                            <h4>Mensajes</h4>
+                        </div>
+                        <div style="margin:2% 2%;">
+                            <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#" data-whatever="@mdo">Historial mensajes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FIN DE SECCION MENSAJES-->
         <!--DATOS DEL AUTOMOVIL Y OPCIONES DE CRUD-->
         <div class="row mb-5">
             <div class="container rounded-50 bg-white">
@@ -134,6 +151,7 @@
                 </div>
             </div>
         </div>
+        <!--FIN DE DATOS DEL AUTOMOVIL-->
         <!--TABLA DE VIAJES ACTIVOS POR EL CONDUCTOR-->
         <div class="row mb-5">
             <div class="container rounded-50 bg-white">

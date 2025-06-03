@@ -1,6 +1,6 @@
-<section id="viajes" class="text-container ">
-    <!-- Small Features -->
-    <div class="cards-1" style="background:#E9F1FA;margin-top: -5%;">
+<section id="viajes" class="text-container" >
+    <!-- INICIO DE TABLA DE VIAJES DE LA SEMANA -->
+    <div class="cards-1 bg-section" style="margin-top: -5%;">
         <div class="container">
             <div class="row justify-content-center align-items-center minh-100">
                 <div class="col-lg-2">
@@ -8,8 +8,8 @@
                     <!-- Card -->
 
                     <div class="card">
-                        <div class="card-image blue">
-                            <i class="fas fa-rocket"></i>
+                        <div class="card-image purple">
+                            <i class="fas fa-car"></i>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -26,8 +26,8 @@
                     <!-- Card -->
 
                     <div class="card">
-                        <div class="card-image blue">
-                            <i class="fas fa-rocket"></i>
+                        <div class="card-image purple">
+                            <i class="fas fa-car"></i>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -70,7 +70,6 @@
                             <td>
                                 <?= $value['destino'] ?>
                             </td>
-                            <!--poner dia de la semana, para que se vea el dia de la semana del viaje-->
                             <td>
                                 <?= Utilidades::english_date_to_spanish($value['fecha']) ?>
                             </td>

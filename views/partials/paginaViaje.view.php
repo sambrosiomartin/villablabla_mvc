@@ -12,7 +12,11 @@
                     <?php
                     foreach ($datos_viaje as $values) {
                     ?>
-                        <h4>Origen: <?= $values['origen'] . " - Sale a las " . $values['hora_salida'] . " desde " . $values['direccion_origen'] ?></h4>
+                        <h4>Origen: <?= $values['origen'] . " - Sale a las " . Utilidades::change_hour($values['hora_salida']) . " horas desde " . $values['direccion_origen'] ?></h4>
+                    <?php
+                     if(!empty($paradas)) { 
+                    ?>
+                    <h5> Y pasa por: </h5>
                         <ul>
                             <?php
                             foreach ($paradas as $values_parada) {
@@ -22,7 +26,8 @@
                             }
                             ?>
                         </ul>
-                        <h4>Destino: <?= $values['destino'] . " - llega a las (hora salida) + " . $values['tiempo_estimado'] . " a " . $values['direccion_destino'] ?></h4>
+                    <?php } ?>
+                        <h4>Destino: <?= $values['destino'] . " - el viaje dura ". $tiempoTotalViaje . " minutos y llega a " . $values['direccion_destino'] ?></h4>
                         <hr>
                         <h4>Quedan <?= $num_asientos_vacios ?> plazas</h4>
                     <?php
@@ -136,7 +141,8 @@
                     <div class="row">
 
                         <div class="col-lg-12 text-center button-padding">
-                            <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#ModalReserva" data-whatever="@mdo">Reservar plaza</button>
+                            <button type="button" class="btn btn-info rounded-pill" data-toggle="modal" data-target="#" data-whatever="@mdo">Hablar con conductor</button>
+                            <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#ModalReserva" data-whatever="@mdo">Reservar plaza</button> 
                         </div>
 
                         <div class="col-lg-12 text-center">
@@ -373,9 +379,6 @@ foreach ($datos_viaje as $value) {
                     <thead>
                         <tr>
                             <td>
-                                codigo
-                            </td>
-                            <td>
                                 Población
                             </td>
                             <td>
@@ -394,9 +397,6 @@ foreach ($datos_viaje as $value) {
                         foreach ($paradas as $values_parada) {
                         ?>
                             <tr>
-                                <td>
-                                    <?= $values_parada['id'] ?>
-                                </td>
                                 <td>
                                     <?= $values_parada['poblacion'] ?>
                                 </td>
