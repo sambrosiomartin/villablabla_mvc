@@ -73,16 +73,61 @@
             </div>
         </div>
         <!--FIN DE DATOS DEL USUARIO-->
-        <!--ENLACES A MENSAJES NO LEIDO Y A HISTORIAL DE MENSAJES-->
-        <div class="row mb-5">
+        <!--ENVIAR MENSAJE, ENLACES A MENSAJES NO LEIDO Y A HISTORIAL DE MENSAJES-->
+        <div id="mensajes" class="row mb-5">
             <div class="container rounded-50 bg-white">
                 <div class="row">
                     <div class="col-12 text-center">
                         <div>
-                            <h4>Mensajes</h4>
+                            <h4>Mensajes no leidos</h4>
                         </div>
+                        <table class="table table-striped" style="width:100%;">
+                            <tr>
+                                <th class="foto">Foto</th>
+                                <th>Nombre de usuario</th>
+                                <th>Mensajes sin leer</th>
+                                <th>Ir a...</th>
+                            </tr>
+                            <?php
+                                if (!empty($mensajesSinLeerAgrupado)) {
+                                    foreach ($mensajesSinLeerAgrupado as $value) {
+                                        $emisor = $datos->ctrShowRegister("usuarios", "id", $value['idEmisor']);
+                            ?>
+                                    <tr>
+                                        <td>
+                                            <img src="<?= Utilidades::imagenUsuario($emisor[0]['username'], $emisor[0]['foto']) ?>" class="rounded-circle img-fluid" alt="imagen de usuario" />
+                                        </td>
+                                        <td>
+                                            <?= $emisor[0]['username'] ?>
+                                        </td>
+                                        <td>
+                                            <?=$value['mensajesEmisor']." mensajes sin leer"?>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                                  //var_dump($usuarioValues[0]['id']);
+                                            ?>
+                                            <form method="POST" action="mensajes">
+                                                <input type="hidden" name="idEmisor" value="<?= $value['idEmisor'] ?>">
+                                                <input type="hidden" name="idReceptor" value="<?=$usuarioValues[0]['id'] ?>">
+                                                <input type="hidden" name="leerMensajes" value="">
+                                                <button type="submit" class="btn btn-info rounded-pill"><i class="fa fa-user"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                            <?php
+                                    }
+                                }
+                                else{
+                                    echo "<h5>No hay mensajes sin leer</h5>";
+                                }
+                            ?>
+                        </table>
                         <div style="margin:2% 2%;">
-                            <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#" data-whatever="@mdo">Historial mensajes</button>
+                            <form method="POST" action="mensajes">
+                                <input type="hidden" name="todosMensajes">
+                                <button type="submit" class="btn btn-primary rounded-pill">Ir a historial de mensajes</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -96,8 +141,8 @@
                     <div class="col-12 text-center">
                         <?php if (!empty($automovilValues)) {  ?>
                             <h4 class="text-center" style="margin:1% 1%;">Datos automovil</h4>
-                            <table style="width:100%; margin:2% 2%;">
-                                <thead>
+                            <table class="table table-striped" style="width:100%; ">
+                                
                                     <tr>
                                         <th>
                                             Marca
@@ -115,8 +160,6 @@
                                             Opciones
                                         </th>
                                     </tr>
-                                </thead>
-                                <tbody>
                                     <?php
                                     foreach ($automovilValues as $values) {
                                     ?>
@@ -141,7 +184,7 @@
                                     <?php
                                     }
                                     ?>
-                                </tbody>
+                               
                             </table>
                         <?php } ?>
                         <div style="margin:2% 2%;">
@@ -158,7 +201,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <h4 class="text-center" style="margin:1% 1%;">Viajes activos</h4>
-                        <table style="border:1px solid black;width:100%;">
+                        <table class="table table-striped" style="width:100%;">
                             <tr>
                                 <th>Origen</th>
                                 <th>Destino</th>
@@ -189,7 +232,7 @@
                                         <td><?= $plazasLibres ?></td>
                                         <td><?= $values['regularidad'] ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-info rounded-pill"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>" target="_blank" rel="noopener" >Ir a viaje...</a></button>
+                                            <button type="button" class="btn btn-info rounded-pill"><a href="index.php?ruta=paginaViaje&id=<?= $values['id'] ?>" target="_blank" rel="noopener">Ir a viaje...</a></button>
                                             <?php
                                             if ($reservasEspera == true) {
                                             ?>
@@ -220,7 +263,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <h4 class="text-center" style="margin:1% 1%;">Reservas activas</h4>
-                        <table style="border:1px solid black;width:100%;">
+                        <table class="table table-striped" style="width:100%;">
                             <tr>
                                 <th>Origen</th>
                                 <th>Destino</th>

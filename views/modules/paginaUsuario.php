@@ -2,6 +2,9 @@
     $table="usuarios";
     $usuarioValues=tablas::showRegister($table,"username",$_SESSION['username']);
     $valores=new CtrUsers();
+    $mensajes=new CtrMensajes();
+    //MOSTRAR MENSAJES NO LEIDOS
+    $mensajesSinLeerAgrupado=$mensajes->ctrShowMensajesSinLeerAgrupado($usuarioValues[0]['id']);
         //var_dump($automovilValues);
      //EDITAR PERFIL USUARIO
     if(isset($_POST['update_user']) && !empty($_POST)){

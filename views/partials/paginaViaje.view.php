@@ -141,7 +141,7 @@
                     <div class="row">
 
                         <div class="col-lg-12 text-center button-padding">
-                            <button type="button" class="btn btn-info rounded-pill" data-toggle="modal" data-target="#" data-whatever="@mdo">Hablar con conductor</button>
+                            <button type="button" class="btn btn-info rounded-pill" data-toggle="modal" data-target="#modalMensaje" data-whatever="@mdo">Hablar con conductor</button>
                             <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#ModalReserva" data-whatever="@mdo">Reservar plaza</button> 
                         </div>
 
@@ -561,3 +561,34 @@ foreach ($paradas as $values_parada) {
 </div>
 
 <!--FIN DE MODAL DE GESTIÓN DE OPCIONES DE VIAJE-->
+<!--MODAL PARA ENVIO DE MENSAJES DEL USUARIO AL CONDUCTOR-->
+<div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100rem;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title" id="exampleModalLabel"></h4>
+                <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Cerrar</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <form enctype="multipart/form-data" action="mensajes" method="POST" class="row g-3">
+                        <input type="hidden" name="idEmisor" value="<?= $id_viajero['id'] ?>">
+                        <input type="hidden" name="idReceptor" value="<?= $datos_conductor[0]['id'] ?>">
+                        <input type="hidden" name="enviarMensaje" />
+                        <textarea class="form-control" name="cuerpoMensaje" id="inputMensaje" rows="3" placeholder="Escriba su mensaje al conductor" required></textarea>
+                        
+                </div>
+                <div class="col-md-12 text-center" style="padding:2em;">
+                    <button type="submit" class="btn btn-success rounded-pill">Enviar mensaje</button>
+                </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
+</div>

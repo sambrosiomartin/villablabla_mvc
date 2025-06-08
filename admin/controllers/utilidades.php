@@ -25,7 +25,8 @@
             'texto' => '/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ !@#$&%*()\\-.+,_]+$/',
             'entero' => '/^[0-9]+$/'
         );
-        if (preg_match($expresion[$value_type], $value)) {
+        $value_sin_espacios = trim(preg_replace('/\t+/', '', $value));
+        if (preg_match($expresion[$value_type], $value_sin_espacios)) {
             return true;
         } else {
             return false;

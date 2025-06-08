@@ -157,7 +157,7 @@
 
         .rounded-50-white {
             border-radius: 50px;
-            padding-bottom:-50rem;
+            padding-bottom: -50rem;
             background: radial-gradient(circle, white, transparent);
         }
 
@@ -202,6 +202,27 @@
 
         .bg-section {
             background: #eee;
+        }
+
+        .noLeido {
+            font-size: 2rem;
+
+        }
+
+        .mensajes {
+            color: purple;
+        }
+
+        .mensajes{
+            text-decoration: none;
+        }
+
+        .mensajes:hover {
+            text-decoration: none;
+            color:red;
+        }
+        .margin-abajo{
+            margin-bottom: 2rem;
         }
     </style>
 </head>
@@ -248,7 +269,7 @@
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="inicio#viajes">Viajes de la semana</a>
                     </li>
-                  
+
                     <?php
                     if (!isset($_SESSION['username'])) {
                         //SI NO EXISTE LA SESION SE VERAN EL BOTON DE REGISTRO Y LOGIN
@@ -274,7 +295,13 @@
                             } else {
                             ?>
                                 <a class="btn-outline-sm page-scroll" href="paginaUsuario">Bienvenid@ <?= $_SESSION['username'] ?></a>
+                                <?php
+                                if (!empty($mensajesSinLeer)) {
+
+                                ?>
+                                    <a class="mensajes" href="paginaUsuario#mensajes"><span class="noLeido"><?= $mensajesSinLeer['COUNT(*)'] ?></span> mensajes sin leer</a>
                             <?php
+                                }
                             }
                             ?>
                         </span>

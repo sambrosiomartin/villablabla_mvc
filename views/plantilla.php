@@ -12,7 +12,8 @@ session_start();
             $_GET['ruta'] == "paginaViaje" ||
             $_GET['ruta'] == "prueba" ||
             $_GET['ruta'] == "insertarOpciones" ||
-            $_GET['ruta'] == "preguntasRespuestas"
+            $_GET['ruta'] == "preguntasRespuestas" ||
+            $_GET['ruta'] == "mensajes" 
         ) {
             if(!isset($_SESSION['username'])){
 //SI NO HAY SESION NO SE PODRA ACCEDER POR LA RUTA AL LOGOUT
