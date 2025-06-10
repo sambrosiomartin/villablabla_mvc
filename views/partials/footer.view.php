@@ -1,6 +1,6 @@
 <!-- Footer -->
-<section class="footer navegador-caractaristicas">
-    <div class="container">
+<section class="footer" style="background-color: #E9F1FA;">
+    <div class="container ">
         <div class="row">
 <!--ENLACES PARA VIAJEROS-->
             <div class="col-lg-6 text-center border-right">
